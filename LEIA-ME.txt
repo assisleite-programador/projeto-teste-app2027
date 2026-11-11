@@ -1,0 +1,36 @@
+# Loja Assis Leite — publicação no GitHub Pages
+
+O pacote contém:
+- `index.html`: catálogo público. Clientes só visualizam e compram pelo WhatsApp.
+- `admin.html`: área separada para o proprietário cadastrar, editar e excluir produtos.
+- `firestore.rules`: regras de segurança do banco.
+
+## 1. Criar o usuário administrador
+1. Abra Firebase Console > Authentication > Começar (se necessário).
+2. Em Sign-in method, habilite **E-mail/senha**.
+3. Em Users, adicione um usuário com seu e-mail e uma senha forte.
+4. Abra o usuário criado e copie o **UID**.
+
+## 2. Proteger o Firestore
+1. Abra Firestore Database > Regras.
+2. No arquivo `firestore.rules`, substitua `COLE_AQUI_O_UID_DO_ADMIN` pelo UID copiado.
+3. Publique as regras.
+
+A leitura da coleção `produtos` é pública para exibir o catálogo. Escrita, edição e exclusão exigem login do UID proprietário. Não use `allow write: if true`.
+
+## 3. Publicar no GitHub
+1. Crie um repositório no GitHub.
+2. Envie `index.html` e `admin.html` para a raiz do repositório.
+3. Em Settings > Pages, escolha Deploy from a branch, branch `main`, pasta `/root`, e salve.
+4. A loja ficará no endereço GitHub Pages do repositório.
+5. A área do proprietário será o mesmo endereço seguido de `/admin.html`.
+
+## 4. Cadastrar produtos
+Entre em `/admin.html` com o e-mail e senha do usuário administrador. Cadastre nome, categoria, preço, estoque, descrição, localização e URL de imagem.
+
+## Observações
+- A configuração Firebase incluída é a fornecida pelo proprietário. A configuração web não é uma senha; a segurança real é aplicada pelas regras do Firestore.
+- O número do WhatsApp está configurado como +55 84 98825-1134.
+- Este exemplo usa URL HTTPS para imagens; hospede as imagens em um serviço confiável.
+- Se já houver regras diferentes no projeto, revise antes de substituir.
+- O site é estático no GitHub Pages; o Firebase fornece autenticação e banco de dados.

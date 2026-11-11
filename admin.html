@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#102b46"><title>Administração | Assis Leite</title>
+<style>
+:root{--navy:#102b46;--green:#15965a;--red:#c43e3e;--bg:#f2f5f9;--muted:#66778a}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Arial,sans-serif;color:#233448}
+header{background:var(--navy);color:#fff;padding:20px 5%;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+header a{color:#fff}.wrap{max-width:1000px;margin:30px auto;padding:0 16px}
+.panel{background:#fff;border-radius:14px;padding:22px;margin-bottom:20px;box-shadow:0 5px 20px #12263a0d}
+h1,h2{margin-top:0}.muted{color:var(--muted);line-height:1.5}
+form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+label{font-size:.9rem;font-weight:700;display:grid;gap:6px}
+input,textarea{width:100%;padding:12px;border:1px solid #d5dee8;border-radius:8px;font:inherit}
+textarea{min-height:85px;resize:vertical}.wide{grid-column:1/-1}
+button{border:0;border-radius:8px;padding:12px 16px;background:var(--green);color:#fff;font-weight:700;cursor:pointer}
+button.secondary{background:#536579}button.danger{background:var(--red)}button:disabled{opacity:.6;cursor:wait}
+.actions{display:flex;gap:8px;flex-wrap:wrap}.row{border-top:1px solid #e6ebf0;padding:14px 0;display:flex;justify-content:space-between;gap:12px;align-items:center}
+.row small{display:block;color:var(--muted);margin-top:4px}.hidden{display:none!important}
+#message{margin-top:12px;padding:10px;border-radius:8px;background:#eef5fb;white-space:pre-wrap}
+@media(max-width:600px){form{grid-template-columns:1fr}.wide{grid-column:auto}.row{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<header><strong>ASSIS LEITE | ADMINISTRAÇÃO</strong><a href="./index.html">Ver loja</a></header>
+<main class="wrap">
+<section id="loginPanel" class="panel">
+<h1>Área do proprietário</h1>
+<p class="muted">Entre com o e-mail e a senha de administrador cadastrados no Firebase Authentication. Clientes não devem usar esta página.</p>
+<form id="loginForm">
+<label class="wide">E-mail<input id="email" type="email" autocomplete="username" required></label>
+<label class="wide">Senha<input id="password" type="password" autocomplete="current-password" required></label>
+<div class="wide"><button type="submit">Entrar</button></div>
+</form><div id="loginMessage" class="muted"></div>
+</section>
+
+<section id="adminPanel" class="hidden">
+<div class="panel">
+<div class="actions" style="justify-content:space-between;align-items:center"><h1>Gerenciar produtos</h1><button id="logout" class="secondary" type="button">Sair</button></div>
+<p class="muted">Cadastre e atualize o catálogo. As alterações são gravadas no Firestore.</p>
+<form id="productForm">
+<input id="productId" type="hidden">
+<label>Nome do produto<input id="name" required maxlength="100"></label>
+<label>Categoria<input id="category" required maxlength="60"></label>
+<label>Preço (R$)<input id="price" type="number" min="0" step="0.01" required></label>
+<label>Quantidade em estoque<input id="stock" type="number" min="0" step="1" required></label>
+<label class="wide">Descrição<textarea id="description" maxlength="1000" required></textarea></label>
+<label class="wide">Localização no estoque<input id="location" placeholder="Ex.: Setor A, Prateleira 02"></label>
+<label class="wide">URL da imagem (opcional)<input id="image" type="url" placeholder="https://..."></label>
+<div class="wide actions"><button id="saveButton" type="submit">Salvar produto</button><button id="clearButton" type="button" class="secondary">Limpar formulário</button></div>
+</form><div id="message" role="status"></div>
+</div>
+<div class="panel"><h2>Produtos cadastrados</h2><div id="productList" class="muted">Carregando...</div></div>
+</section>
+</main>
+<script type="module">
+import {initializeApp} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+import {getAuth,onAuthStateChanged,signInWithEmailAndPassword,signOut} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+import {getFirestore,collection,addDoc,getDocs,doc,updateDoc,deleteDoc,serverTimestamp} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+const firebaseConfig={
+ apiKey:"AIzaSyBaoUIuPzxWWRfYi5yA6mR-yakc1f1ZzaY",
+ authDomain:"projeto-teste-2027.firebaseapp.com",
+ projectId:"projeto-teste-2027",
+ storageBucket:"projeto-teste-2027.firebasestorage.app",
+ messagingSenderId:"656064645546",
+ appId:"1:656064645546:web:c0b39c8517abec430a43d",
+ measurementId:"G-PPWNLCSY9Q"
+};
+const app=initializeApp(firebaseConfig),auth=getAuth(app),db=getFirestore(app);
+const $=id=>document.getElementById(id);
+const form=$("productForm"),list=$("productList"),message=$("message");
+const clean=()=>{form.reset();$("productId").value="";$("saveButton").textContent="Salvar produto";};
+$("loginForm").addEventListener("submit",async e=>{
+ e.preventDefault();$("loginMessage").textContent="Entrando...";
+ try{await signInWithEmailAndPassword(auth,$("email").value,$("password").value);$("loginMessage").textContent="";}
+ catch(err){$("loginMessage").textContent="Não foi possível entrar. Confira e-mail e senha e se o usuário foi criado no Firebase Authentication.";}
+});
+onAuthStateChanged(auth,user=>{
+ $("loginPanel").classList.toggle("hidden",!!user);
+ $("adminPanel").classList.toggle("hidden",!user);
+ if(user)loadProducts();
+});
+$("logout").addEventListener("click",()=>signOut(auth));
+$("clearButton").addEventListener("click",clean);
+function esc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+async function loadProducts(){
+ try{
+  const snap=await getDocs(collection(db,"produtos"));
+  const rows=snap.docs.map(d=>({id:d.id,...d.data()}));
+  list.innerHTML=rows.length?rows.map(p=>`<div class="row"><div><strong>${esc(p.nome)}</strong><small>${esc(p.categoria)} · R$ ${Number(p.preco||0).toFixed(2).replace(".",",")} · Estoque: ${Number(p.estoque)||0}</small></div><div class="actions"><button type="button" class="secondary" data-edit="${esc(p.id)}">Editar</button><button type="button" class="danger" data-delete="${esc(p.id)}">Excluir</button></div></div>`).join(""):"Nenhum produto cadastrado ainda.";
+ }catch(e){console.error(e);list.textContent="Erro ao carregar. Confira as regras do Firestore e o UID do administrador.";}
+}
+form.addEventListener("submit",async e=>{
+ e.preventDefault();const btn=$("saveButton");btn.disabled=true;
+ const data={nome:$("name").value.trim(),categoria:$("category").value.trim(),preco:Number($("price").value),estoque:Number($("stock").value),descricao:$("description").value.trim(),localizacao:$("location").value.trim(),imagem:$("image").value.trim(),atualizadoEm:serverTimestamp()};
+ try{
+  const id=$("productId").value;
+  if(id)await updateDoc(doc(db,"produtos",id),data);else await addDoc(collection(db,"produtos"),{...data,criadoEm:serverTimestamp()});
+  message.textContent="Produto salvo com sucesso.";clean();await loadProducts();
+ }catch(err){console.error(err);message.textContent="Não foi possível salvar. Verifique se as regras do Firestore permitem escrita para este administrador.";}
+ finally{btn.disabled=false;}
+});
+list.addEventListener("click",async e=>{
+ const edit=e.target.dataset.edit,del=e.target.dataset.delete;
+ if(edit){
+  try{const snap=await getDocs(collection(db,"produtos"));const d=snap.docs.find(x=>x.id===edit);if(!d)return;const p=d.data();
+   $("productId").value=d.id;$("name").value=p.nome||"";$("category").value=p.categoria||"";$("price").value=p.preco??0;$("stock").value=p.estoque??0;$("description").value=p.descricao||"";$("location").value=p.localizacao||"";$("image").value=p.imagem||"";$("saveButton").textContent="Atualizar produto";window.scrollTo({top:0,behavior:"smooth"});
+  }catch(err){message.textContent="Erro ao abrir produto para edição.";}
+ }
+ if(del&&confirm("Tem certeza que deseja excluir este produto?")){
+  try{await deleteDoc(doc(db,"produtos",del));message.textContent="Produto excluído.";await loadProducts();}
+  catch(err){message.textContent="Não foi possível excluir. Verifique as regras de acesso.";}
+ }
+});
+</script>
+</body>
+</html>
