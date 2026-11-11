@@ -4,17 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TechStore - Sua Loja de Tecnologia</title>
-    <!-- Tailwind CSS CDN -->
+    
+    <!-- 1. IMPORTAÇÃO DAS BIBLIOTECAS -->
+    <!-- Tailwind CSS CDN: Responsável por toda a estilização e visual responsivo -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome Icons -->
+
+    <!-- Font Awesome Icons: Biblioteca de ícones (carrinho, busca, lixeira, etc.) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Font Inter -->
+
+    <!-- Google Fonts: Fonte Inter para tipografia moderna -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- ESTILOS ADICIONAIS -->
     <style>
         body {
             font-family: 'Inter', sans-serif;
         }
-        /* Custom scrollbar for cart drawer */
+        /* Customização da barra de rolagem do painel lateral do carrinho */
         .custom-scrollbar::-webkit-scrollbar {
             width: 6px;
         }
@@ -32,20 +38,22 @@
 </head>
 <body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen">
 
-    <!-- HEADER / BARRA DE NAVEGAÇÃO -->
+    <!-- ========================================================================= -->
+    <!-- CABEÇALHO / NAVBAR (Fixo no topo da página) -->
+    <!-- ========================================================================= -->
     <header class="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16 gap-4">
                 
-                <!-- Logo -->
+                <!-- LOGO DA LOJA: Clicar nela reseta a busca -->
                 <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="resetSearch()">
                     <div class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white font-bold text-xl shadow-md shadow-indigo-200">
-                        <i class="fa-solid font-bold fa-bolt"></i>
+                        <i class="fa-solid fa-bolt"></i>
                     </div>
                     <span class="text-xl font-bold bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">TechStore</span>
                 </div>
 
-                <!-- Campo de Busca em Tempo Real -->
+                <!-- CAMPO DE BUSCA EM TEMPO REAL: Filtra os produtos enquanto você digita -->
                 <div class="flex-1 max-w-md mx-2 sm:mx-4">
                     <div class="relative">
                         <input 
@@ -61,7 +69,7 @@
                     </div>
                 </div>
 
-                <!-- Botão de Carrinho com Badge -->
+                <!-- BOTÃO DO CARRINHO: Exibe o ícone e a badge vermelha com a quantidade de itens -->
                 <div class="flex items-center">
                     <button 
                         id="cart-button" 
@@ -70,6 +78,7 @@
                         aria-label="Abrir carrinho"
                     >
                         <i class="fa-solid fa-bag-shopping text-xl"></i>
+                        <!-- Badge de contagem dos itens -->
                         <span 
                             id="cart-count" 
                             class="absolute top-0 right-0 inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-indigo-600 rounded-full ring-2 ring-white transform translate-x-1 -translate-y-1 scale-0 transition-transform duration-300"
@@ -78,14 +87,17 @@
                         </span>
                     </button>
                 </div>
+
             </div>
         </div>
     </header>
 
-    <!-- CONTEÚDO PRINCIPAL -->
+    <!-- ========================================================================= -->
+    <!-- CONTEÚDO PRINCIPAL (Área dos produtos) -->
+    <!-- ========================================================================= -->
     <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
         
-        <!-- Banner de Boas-vindas -->
+        <!-- BANNER DE BOAS-VINDAS -->
         <div class="bg-gradient-to-r from-indigo-600 via-indigo-700 to-violet-800 rounded-3xl p-6 sm:p-10 text-white mb-8 shadow-xl shadow-indigo-100 relative overflow-hidden">
             <div class="relative z-10 max-w-xl">
                 <span class="inline-block px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-xs font-semibold uppercase tracking-wider mb-3">Ofertas Especiais</span>
@@ -97,7 +109,7 @@
             </div>
         </div>
 
-        <!-- Título da Seção & Filtros Status -->
+        <!-- TÍTULO E SUBTÍTULO DA SEÇÃO DE PRODUTOS -->
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
             <div>
                 <h2 class="text-xl font-bold text-slate-900">Produtos em Destaque</h2>
@@ -105,12 +117,17 @@
             </div>
         </div>
 
-        <!-- Grade de Produtos Responsiva -->
+        <!-- GRADE RESPONSIVA DE PRODUTOS:
+             grid-cols-1 (Celular)
+             sm:grid-cols-2 (Celular grande/Tablet)
+             md:grid-cols-3 (Tablet grande/Desktop pequeno)
+             lg:grid-cols-4 (Desktop/Computador)
+        -->
         <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            <!-- Cards gerados via JS -->
+            <!-- Os cards de produtos serão inseridos aqui automaticamente via JavaScript -->
         </div>
 
-        <!-- Estado Vazio (Sem resultados da busca) -->
+        <!-- MENSAGEM QUANDO NENHUM PRODUTO É ENCONTRADO NA BUSCA -->
         <div id="empty-search" class="hidden text-center py-16">
             <div class="w-16 h-16 bg-slate-100 text-slate-400 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -121,9 +138,12 @@
                 Ver todos os produtos
             </button>
         </div>
+
     </main>
 
-    <!-- RODAPÉ -->
+    <!-- ========================================================================= -->
+    <!-- RODAPÉ DA PÁGINA -->
+    <!-- ========================================================================= -->
     <footer class="bg-white border-t border-slate-200 mt-12 py-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-slate-500">
             <div class="flex items-center gap-2">
@@ -140,10 +160,16 @@
         </div>
     </footer>
 
-    <!-- PAINEL LATERAL DO CARRINHO (DRAWER) -->
+    <!-- ========================================================================= -->
+    <!-- PAINEL LATERAL DO CARRINHO (DRAWER SLIDE-OVER) -->
+    <!-- ========================================================================= -->
+    
+    <!-- Fundo escuro transparente (Overlay) ao abrir o carrinho -->
     <div id="cart-drawer-overlay" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300" onclick="toggleCart(false)"></div>
     
+    <!-- Estrutura da gaveta do carrinho -->
     <aside id="cart-drawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-white z-50 shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
+        
         <!-- Cabeçalho do Carrinho -->
         <div class="p-5 border-b border-slate-100 flex items-center justify-between bg-slate-50">
             <div class="flex items-center gap-2">
@@ -156,12 +182,12 @@
             </button>
         </div>
 
-        <!-- Lista de Itens do Carrinho -->
+        <!-- Lista dos Itens Adicionados no Carrinho -->
         <div id="cart-items" class="flex-1 overflow-y-auto p-5 space-y-4 custom-scrollbar">
-            <!-- Itens inseridos via JS -->
+            <!-- Os produtos do carrinho aparecem aqui via JS -->
         </div>
 
-        <!-- Estado Vazio do Carrinho -->
+        <!-- Estado Vazio (Aparece se não houver itens no carrinho) -->
         <div id="cart-empty-state" class="flex-1 flex flex-col items-center justify-center p-6 text-center">
             <div class="w-20 h-20 bg-slate-100 text-slate-300 rounded-full flex items-center justify-center mb-4 text-3xl">
                 <i class="fa-solid fa-cart-flatbed"></i>
@@ -173,7 +199,7 @@
             </button>
         </div>
 
-        <!-- Rodapé do Carrinho com Resumo do Valor -->
+        <!-- Rodapé do Carrinho (Subtotal, Total e Botão de Checkout) -->
         <div id="cart-footer" class="p-5 border-t border-slate-100 bg-slate-50 space-y-4 hidden">
             <div class="space-y-2 text-sm">
                 <div class="flex justify-between text-slate-500">
@@ -195,9 +221,12 @@
                 <i class="fa-solid fa-arrow-right text-sm"></i>
             </button>
         </div>
+
     </aside>
 
-    <!-- NOTIFICAÇÃO TOAST -->
+    <!-- ========================================================================= -->
+    <!-- NOTIFICAÇÃO TOAST (Alerta no canto inferior direito) -->
+    <!-- ========================================================================= -->
     <div id="toast" class="fixed bottom-5 right-5 bg-slate-900 text-white px-4 py-3 rounded-2xl shadow-xl flex items-center gap-3 transform translate-y-20 opacity-0 transition-all duration-300 z-50">
         <div class="w-7 h-7 rounded-full bg-emerald-500 flex items-center justify-center text-white text-xs">
             <i class="fa-solid fa-check"></i>
@@ -205,16 +234,21 @@
         <span id="toast-message" class="text-sm font-medium">Produto adicionado ao carrinho!</span>
     </div>
 
-    <!-- JAVASCRIPT DA APLICAÇÃO -->
+    <!-- ========================================================================= -->
+    <!-- LÓGICA JAVASCRIPT -->
+    <!-- ========================================================================= -->
     <script>
-        // Dados dos 6 Produtos Pré-carregados
+        // =========================================================================
+        // ONDE EDITAR OS PRODUTOS:
+        // Modifique, exclua ou adicione novos objetos a este array para alterar sua loja!
+        // =========================================================================
         const products = [
             {
-                id: 1,
-                name: "Fone de Ouvido Bluetooth Sem Fio",
-                price: 189.90,
-                description: "Fone com cancelamento de ruído ativo, bateria de até 24h e conexão rápida Bluetooth 5.3.",
-                image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&q=80"
+                id: 1,                                        // ID único (não repetir)
+                name: "Fone de Ouvido Bluetooth Sem Fio",     // Nome do produto
+                price: 189.90,                                // Preço (use ponto para centavos)
+                description: "Fone com cancelamento de ruído ativo, bateria de até 24h e conexão rápida Bluetooth 5.3.", // Descrição
+                image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&q=80" // Link da imagem
             },
             {
                 id: 2,
@@ -253,25 +287,26 @@
             }
         ];
 
-        // Estado do Carrinho (Armazenado na memória)
+        // Estado Global do Carrinho (Armazena os itens selecionados pelo usuário em memória)
         let cart = [];
 
-        // Inicialização
+        // EVENTO DE INICIALIZAÇÃO: Executado assim que a página é carregada totalmente
         window.addEventListener('DOMContentLoaded', () => {
-            renderProducts(products);
-            updateCartUI();
+            renderProducts(products); // Desenha a grade inicial de produtos
+            updateCartUI();            // Atualiza a interface do carrinho (que inicia vazio)
         });
 
-        // Formatação de Moeda
+        // FUNÇÃO AUXILIAR: Converte valores numéricos em moeda brasileira (R$)
         function formatMoney(amount) {
             return amount.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
         }
 
-        // Renderiza os cards de produtos na página
+        // FUNÇÃO: Constrói e exibe os cards HTML de cada produto na grade principal
         function renderProducts(items) {
             const grid = document.getElementById('products-grid');
             const emptySearch = document.getElementById('empty-search');
 
+            // Se a busca não encontrar nada, exibe mensagem de estado vazio
             if (items.length === 0) {
                 grid.innerHTML = '';
                 emptySearch.classList.remove('hidden');
@@ -279,8 +314,11 @@
             }
 
             emptySearch.classList.add('hidden');
+            
+            // Mapeia o array de produtos transformando cada um em um card HTML
             grid.innerHTML = items.map(product => `
                 <div class="bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden group">
+                    <!-- Imagem do Produto -->
                     <div class="relative overflow-hidden bg-slate-100 pt-[75%]">
                         <img 
                             src="${product.image}" 
@@ -290,6 +328,8 @@
                             onerror="this.src='https://placehold.co/600x400/e2e8f0/475569?text=Produto'"
                         />
                     </div>
+                    
+                    <!-- Informações do Produto (Nome, Descrição, Preço e Botão) -->
                     <div class="p-5 flex flex-col flex-grow">
                         <h3 class="font-bold text-slate-800 text-base leading-snug mb-2 group-hover:text-indigo-600 transition-colors">
                             ${product.name}
@@ -297,11 +337,14 @@
                         <p class="text-xs text-slate-500 line-clamp-2 mb-4 flex-grow">
                             ${product.description}
                         </p>
+                        
                         <div class="pt-3 border-t border-slate-100 flex items-center justify-between gap-2 mt-auto">
                             <div>
                                 <span class="text-xs text-slate-400 block font-medium">Preço</span>
                                 <span class="text-lg font-extrabold text-slate-900">${formatMoney(product.price)}</span>
                             </div>
+                            
+                            <!-- Botão "Comprar" com acionamento do evento addToCart() -->
                             <button 
                                 onclick="addToCart(${product.id})" 
                                 class="px-3.5 py-2.5 bg-indigo-600 hover:bg-indigo-700 active:scale-95 text-white text-xs font-semibold rounded-xl flex items-center gap-1.5 transition-all shadow-md shadow-indigo-100"
@@ -315,7 +358,7 @@
             `).join('');
         }
 
-        // Filtra os produtos com base na busca
+        // FUNÇÃO DE BUSCA: Filtra os produtos pelo nome ou pela descrição em tempo real
         function filterProducts() {
             const query = document.getElementById('search-input').value.toLowerCase().trim();
             const filtered = products.filter(p => 
@@ -333,14 +376,14 @@
             renderProducts(filtered);
         }
 
-        // Reseta o filtro de busca
+        // FUNÇÃO: Reseta o campo de busca e restaura a exibição de todos os produtos
         function resetSearch() {
             document.getElementById('search-input').value = '';
             document.getElementById('search-results-info').textContent = 'Mostrando todos os produtos';
             renderProducts(products);
         }
 
-        // Adiciona um produto ao carrinho
+        // FUNÇÃO: Adiciona um item ao carrinho ou incrementa sua quantidade caso já exista
         function addToCart(productId) {
             const product = products.find(p => p.id === productId);
             if (!product) return;
@@ -357,13 +400,14 @@
             showToast(`"${product.name}" foi adicionado!`);
         }
 
-        // Altera a quantidade de um item no carrinho
+        // FUNÇÃO: Altera a quantidade de um produto dentro do carrinho (+1 ou -1)
         function updateQuantity(productId, change) {
             const item = cart.find(i => i.id === productId);
             if (!item) return;
 
             item.quantity += change;
 
+            // Se a quantidade zerar, remove o item do carrinho
             if (item.quantity <= 0) {
                 removeFromCart(productId);
             } else {
@@ -371,24 +415,25 @@
             }
         }
 
-        // Remove um item do carrinho
+        // FUNÇÃO: Remove completamente um item do carrinho
         function removeFromCart(productId) {
             cart = cart.filter(item => item.id !== productId);
             updateCartUI();
         }
 
-        // Atualiza toda a Interface do Carrinho
+        // FUNÇÃO CENTRAL DA UI: Recalcula totais, badges e renderiza o HTML interno do carrinho
         function updateCartUI() {
             const totalItemsCount = cart.reduce((sum, item) => sum + item.quantity, 0);
             const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
-            // Atualizar badges
+            // Atualiza os contadores numéricos (Badges)
             const cartCountBadge = document.getElementById('cart-count');
             const drawerBadge = document.getElementById('cart-drawer-badge');
 
             cartCountBadge.textContent = totalItemsCount;
             drawerBadge.textContent = `${totalItemsCount} ${totalItemsCount === 1 ? 'item' : 'itens'}`;
 
+            // Controla a animação de visibilidade do contador no topo
             if (totalItemsCount > 0) {
                 cartCountBadge.classList.remove('scale-0');
                 cartCountBadge.classList.add('scale-100');
@@ -397,11 +442,11 @@
                 cartCountBadge.classList.add('scale-0');
             }
 
-            // Atualizar valores do rodapé
+            // Atualiza os valores financeiros nos campos correspondentes
             document.getElementById('cart-subtotal').textContent = formatMoney(subtotal);
             document.getElementById('cart-total').textContent = formatMoney(subtotal);
 
-            // Controlar a visibilidade da lista vs estado vazio
+            // Alterna a exibição do carrinho entre "Com Itens" e "Carrinho Vazio"
             const itemsContainer = document.getElementById('cart-items');
             const emptyState = document.getElementById('cart-empty-state');
             const footer = document.getElementById('cart-footer');
@@ -415,14 +460,16 @@
                 emptyState.classList.add('hidden');
                 footer.classList.remove('hidden');
 
-                // Renderizar Itens
+                // Renderiza a lista de produtos presentes no carrinho
                 itemsContainer.innerHTML = cart.map(item => `
                     <div class="flex items-center gap-3 p-3 bg-slate-50 rounded-xl border border-slate-100">
                         <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded-lg bg-white flex-shrink-0" />
+                        
                         <div class="flex-grow min-w-0">
                             <h4 class="text-xs font-bold text-slate-800 truncate">${item.name}</h4>
                             <span class="text-xs font-extrabold text-indigo-600 block mt-0.5">${formatMoney(item.price)}</span>
                             
+                            <!-- Botões de controle de quantidade -->
                             <div class="flex items-center gap-2 mt-2">
                                 <div class="flex items-center border border-slate-200 bg-white rounded-lg">
                                     <button onclick="updateQuantity(${item.id}, -1)" class="w-6 h-6 flex items-center justify-center text-slate-500 hover:text-slate-800 text-xs">
@@ -435,6 +482,8 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Botão para excluir o item -->
                         <button onclick="removeFromCart(${item.id})" class="p-2 text-slate-400 hover:text-rose-500 transition-colors">
                             <i class="fa-solid fa-trash-can text-sm"></i>
                         </button>
@@ -443,7 +492,7 @@
             }
         }
 
-        // Abre / Fecha o Drawer do Carrinho
+        // FUNÇÃO: Controla a abertura e o fechamento do painel lateral do carrinho
         function toggleCart(open) {
             const drawer = document.getElementById('cart-drawer');
             const overlay = document.getElementById('cart-drawer-overlay');
@@ -451,7 +500,7 @@
             if (open) {
                 overlay.classList.remove('opacity-0', 'pointer-events-none');
                 drawer.classList.remove('translate-x-full');
-                document.body.classList.add('overflow-hidden');
+                document.body.classList.add('overflow-hidden'); // Bloqueia a rolagem da página ao fundo
             } else {
                 overlay.classList.add('opacity-0', 'pointer-events-none');
                 drawer.classList.add('translate-x-full');
@@ -459,7 +508,7 @@
             }
         }
 
-        // Exibe Notificação Toast
+        // FUNÇÃO: Exibe um aviso temporário (Toast notification) na parte inferior da tela
         function showToast(message) {
             const toast = document.getElementById('toast');
             const toastMsg = document.getElementById('toast-message');
@@ -472,13 +521,13 @@
             }, 3000);
         }
 
-        // Finalizar Compra Simulação
+        // FUNÇÃO: Simula a finalização do pedido de compra
         function checkout() {
             if (cart.length === 0) return;
 
             const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             
-            // Simulação de compra com aviso elegante sem usar alert() nativo
+            // Limpa o carrinho após finalizar
             cart = [];
             updateCartUI();
             toggleCart(false);
