@@ -3,16 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechStore - Sua Loja de Tecnologia</title>
+    <title>TechStore - Sua Loja Multi-Categorias</title>
     
     <!-- 1. IMPORTAÇÃO DAS BIBLIOTECAS -->
-    <!-- Tailwind CSS CDN: Responsável por toda a estilização e visual responsivo -->
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Font Awesome Icons: Biblioteca de ícones (carrinho, busca, lixeira, etc.) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- Google Fonts: Fonte Inter para tipografia moderna -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- ESTILOS ADICIONAIS -->
@@ -20,7 +15,6 @@
         body {
             font-family: 'Inter', sans-serif;
         }
-        /* Customização da barra de rolagem do painel lateral do carrinho */
         .custom-scrollbar::-webkit-scrollbar {
             width: 6px;
         }
@@ -34,32 +28,40 @@
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
             background: #94a3b8;
         }
+        /* Esconde a barra de rolagem horizontal das categorias mantendo a função de deslizar no celular */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen">
 
     <!-- ========================================================================= -->
-    <!-- CABEÇALHO / NAVBAR (Fixo no topo da página) -->
+    <!-- CABEÇALHO / NAVBAR -->
     <!-- ========================================================================= -->
     <header class="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16 gap-4">
                 
-                <!-- LOGO DA LOJA: Clicar nela reseta a busca -->
-                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="resetSearch()">
+                <!-- LOGO -->
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="resetToHome()">
                     <div class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white font-bold text-xl shadow-md shadow-indigo-200">
                         <i class="fa-solid fa-bolt"></i>
                     </div>
                     <span class="text-xl font-bold bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">TechStore</span>
                 </div>
 
-                <!-- CAMPO DE BUSCA EM TEMPO REAL: Filtra os produtos enquanto você digita -->
+                <!-- CAMPO DE BUSCA -->
                 <div class="flex-1 max-w-md mx-2 sm:mx-4">
                     <div class="relative">
                         <input 
                             type="text" 
                             id="search-input" 
-                            placeholder="Buscar produtos..." 
+                            placeholder="Buscar produtos em todas as categorias..." 
                             class="w-full pl-10 pr-4 py-2 text-sm bg-slate-100 border border-transparent rounded-full focus:bg-white focus:border-indigo-500 focus:outline-none transition-all duration-200"
                             oninput="filterProducts()"
                         >
@@ -69,7 +71,7 @@
                     </div>
                 </div>
 
-                <!-- BOTÃO DO CARRINHO: Exibe o ícone e a badge vermelha com a quantidade de itens -->
+                <!-- BOTÃO DO CARRINHO -->
                 <div class="flex items-center">
                     <button 
                         id="cart-button" 
@@ -78,7 +80,6 @@
                         aria-label="Abrir carrinho"
                     >
                         <i class="fa-solid fa-bag-shopping text-xl"></i>
-                        <!-- Badge de contagem dos itens -->
                         <span 
                             id="cart-count" 
                             class="absolute top-0 right-0 inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-indigo-600 rounded-full ring-2 ring-white transform translate-x-1 -translate-y-1 scale-0 transition-transform duration-300"
@@ -93,56 +94,91 @@
     </header>
 
     <!-- ========================================================================= -->
-    <!-- CONTEÚDO PRINCIPAL (Área dos produtos) -->
+    <!-- CONTEÚDO PRINCIPAL -->
     <!-- ========================================================================= -->
     <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
         
         <!-- BANNER DE BOAS-VINDAS -->
         <div class="bg-gradient-to-r from-indigo-600 via-indigo-700 to-violet-800 rounded-3xl p-6 sm:p-10 text-white mb-8 shadow-xl shadow-indigo-100 relative overflow-hidden">
             <div class="relative z-10 max-w-xl">
-                <span class="inline-block px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-xs font-semibold uppercase tracking-wider mb-3">Ofertas Especiais</span>
-                <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight mb-2">Tecnologia Premium ao Seu Alcance</h1>
-                <p class="text-indigo-100 text-sm sm:text-base">Aproveite nossos preços exclusivos e garanta frete grátis para todo o Brasil em compras selecionadas.</p>
+                <span class="inline-block px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-xs font-semibold uppercase tracking-wider mb-3">Departamentos</span>
+                <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight mb-2">Tudo o que você precisa em um só lugar</h1>
+                <p class="text-indigo-100 text-sm sm:text-base">Explore nossas categorias abaixo e escolha os melhores produtos com frete rápido.</p>
             </div>
             <div class="absolute -right-10 -bottom-10 opacity-10 pointer-events-none">
-                <i class="fa-solid fa-microchip text-[240px]"></i>
+                <i class="fa-solid fa-bag-shopping text-[240px]"></i>
             </div>
         </div>
 
-        <!-- TÍTULO E SUBTÍTULO DA SEÇÃO DE PRODUTOS -->
+        <!-- MENU DE CATEGORIAS EM CÍRCULOS (Abaixo do Banner) -->
+        <div class="mb-10">
+            <h3 class="text-sm font-bold uppercase tracking-wider text-slate-400 mb-4">Navegue por Categorias</h3>
+            <div class="flex items-center gap-6 overflow-x-auto pb-3 no-scrollbar">
+                
+                <!-- Categoria 1: Eletrônicos -->
+                <button onclick="selectCategory('eletronicos')" class="group flex flex-col items-center flex-shrink-0 focus:outline-none">
+                    <div id="cat-btn-eletronicos" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white border-2 border-indigo-600 shadow-md group-hover:scale-105 transition-all overflow-hidden flex items-center justify-center">
+                        <img src="https://images.unsplash.com/photo-1526738549149-8e07eca6c147?w=300&q=80" alt="Eletrônicos" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                    </div>
+                    <span class="mt-2 text-xs sm:text-sm font-bold text-indigo-600">Eletrônicos</span>
+                </button>
+
+                <!-- Categoria 2: Roupas -->
+                <button onclick="selectCategory('roupas')" class="group flex flex-col items-center flex-shrink-0 focus:outline-none">
+                    <div id="cat-btn-roupas" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white border-2 border-transparent shadow-md group-hover:scale-105 transition-all overflow-hidden flex items-center justify-center">
+                        <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?w=300&q=80" alt="Roupas" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                    </div>
+                    <span class="mt-2 text-xs sm:text-sm font-semibold text-slate-600 group-hover:text-indigo-600">Roupas</span>
+                </button>
+
+                <!-- Categoria 3: Calçados -->
+                <button onclick="selectCategory('calcados')" class="group flex flex-col items-center flex-shrink-0 focus:outline-none">
+                    <div id="cat-btn-calcados" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white border-2 border-transparent shadow-md group-hover:scale-105 transition-all overflow-hidden flex items-center justify-center">
+                        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300&q=80" alt="Calçados" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                    </div>
+                    <span class="mt-2 text-xs sm:text-sm font-semibold text-slate-600 group-hover:text-indigo-600">Calçados</span>
+                </button>
+
+                <!-- Categoria 4: Para o Lar -->
+                <button onclick="selectCategory('lar')" class="group flex flex-col items-center flex-shrink-0 focus:outline-none">
+                    <div id="cat-btn-lar" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white border-2 border-transparent shadow-md group-hover:scale-105 transition-all overflow-hidden flex items-center justify-center">
+                        <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=300&q=80" alt="Para o Lar" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                    </div>
+                    <span class="mt-2 text-xs sm:text-sm font-semibold text-slate-600 group-hover:text-indigo-600">Para o Lar</span>
+                </button>
+
+            </div>
+        </div>
+
+        <!-- TÍTULO DA SEÇÃO ATUAL -->
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
             <div>
-                <h2 class="text-xl font-bold text-slate-900">Produtos em Destaque</h2>
-                <p id="search-results-info" class="text-sm text-slate-500">Mostrando todos os produtos</p>
+                <h2 id="current-category-title" class="text-xl font-bold text-slate-900">Eletrônicos</h2>
+                <p id="search-results-info" class="text-sm text-slate-500">Mostrando 6 produtos desta categoria</p>
             </div>
         </div>
 
-        <!-- GRADE RESPONSIVA DE PRODUTOS:
-             grid-cols-1 (Celular)
-             sm:grid-cols-2 (Celular grande/Tablet)
-             md:grid-cols-3 (Tablet grande/Desktop pequeno)
-             lg:grid-cols-4 (Desktop/Computador)
-        -->
+        <!-- GRADE DE PRODUTOS RESPONSIVA -->
         <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            <!-- Os cards de produtos serão inseridos aqui automaticamente via JavaScript -->
+            <!-- Os cards são gerados via JavaScript -->
         </div>
 
-        <!-- MENSAGEM QUANDO NENHUM PRODUTO É ENCONTRADO NA BUSCA -->
+        <!-- ESTADO VAZIO (Busca sem resultados) -->
         <div id="empty-search" class="hidden text-center py-16">
             <div class="w-16 h-16 bg-slate-100 text-slate-400 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </div>
             <h3 class="text-lg font-semibold text-slate-800 mb-1">Nenhum produto encontrado</h3>
-            <p class="text-slate-500 text-sm mb-4">Tente buscar por outro termo ou palavra-chave.</p>
-            <button onclick="resetSearch()" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-xl text-sm transition-colors">
-                Ver todos os produtos
+            <p class="text-slate-500 text-sm mb-4">Tente buscar por outro termo ou limpe a busca.</p>
+            <button onclick="resetToHome()" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-xl text-sm transition-colors">
+                Ver categoria atual
             </button>
         </div>
 
     </main>
 
     <!-- ========================================================================= -->
-    <!-- RODAPÉ DA PÁGINA -->
+    <!-- RODAPÉ -->
     <!-- ========================================================================= -->
     <footer class="bg-white border-t border-slate-200 mt-12 py-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-slate-500">
@@ -161,16 +197,11 @@
     </footer>
 
     <!-- ========================================================================= -->
-    <!-- PAINEL LATERAL DO CARRINHO (DRAWER SLIDE-OVER) -->
+    <!-- PAINEL LATERAL DO CARRINHO (DRAWER) -->
     <!-- ========================================================================= -->
-    
-    <!-- Fundo escuro transparente (Overlay) ao abrir o carrinho -->
     <div id="cart-drawer-overlay" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300" onclick="toggleCart(false)"></div>
     
-    <!-- Estrutura da gaveta do carrinho -->
     <aside id="cart-drawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-white z-50 shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
-        
-        <!-- Cabeçalho do Carrinho -->
         <div class="p-5 border-b border-slate-100 flex items-center justify-between bg-slate-50">
             <div class="flex items-center gap-2">
                 <i class="fa-solid fa-bag-shopping text-indigo-600 text-lg"></i>
@@ -182,12 +213,8 @@
             </button>
         </div>
 
-        <!-- Lista dos Itens Adicionados no Carrinho -->
-        <div id="cart-items" class="flex-1 overflow-y-auto p-5 space-y-4 custom-scrollbar">
-            <!-- Os produtos do carrinho aparecem aqui via JS -->
-        </div>
+        <div id="cart-items" class="flex-1 overflow-y-auto p-5 space-y-4 custom-scrollbar"></div>
 
-        <!-- Estado Vazio (Aparece se não houver itens no carrinho) -->
         <div id="cart-empty-state" class="flex-1 flex flex-col items-center justify-center p-6 text-center">
             <div class="w-20 h-20 bg-slate-100 text-slate-300 rounded-full flex items-center justify-center mb-4 text-3xl">
                 <i class="fa-solid fa-cart-flatbed"></i>
@@ -199,7 +226,6 @@
             </button>
         </div>
 
-        <!-- Rodapé do Carrinho (Subtotal, Total e Botão de Checkout) -->
         <div id="cart-footer" class="p-5 border-t border-slate-100 bg-slate-50 space-y-4 hidden">
             <div class="space-y-2 text-sm">
                 <div class="flex justify-between text-slate-500">
@@ -215,18 +241,14 @@
                     <span id="cart-total" class="text-indigo-600 text-lg">R$ 0,00</span>
                 </div>
             </div>
-            
             <button onclick="checkout()" class="w-full py-3.5 bg-indigo-600 hover:bg-indigo-700 active:scale-[0.98] text-white font-semibold rounded-xl shadow-lg shadow-indigo-200 transition-all flex items-center justify-center gap-2">
                 <span>Finalizar Compra</span>
                 <i class="fa-solid fa-arrow-right text-sm"></i>
             </button>
         </div>
-
     </aside>
 
-    <!-- ========================================================================= -->
-    <!-- NOTIFICAÇÃO TOAST (Alerta no canto inferior direito) -->
-    <!-- ========================================================================= -->
+    <!-- NOTIFICAÇÃO TOAST -->
     <div id="toast" class="fixed bottom-5 right-5 bg-slate-900 text-white px-4 py-3 rounded-2xl shadow-xl flex items-center gap-3 transform translate-y-20 opacity-0 transition-all duration-300 z-50">
         <div class="w-7 h-7 rounded-full bg-emerald-500 flex items-center justify-center text-white text-xs">
             <i class="fa-solid fa-check"></i>
@@ -235,78 +257,113 @@
     </div>
 
     <!-- ========================================================================= -->
-    <!-- LÓGICA JAVASCRIPT -->
+    <!-- LÓGICA JAVASCRIPT & BANCO DE DADOS DOS PRODUTOS POR CATEGORIA -->
     <!-- ========================================================================= -->
     <script>
         // =========================================================================
-        // ONDE EDITAR OS PRODUTOS:
-        // Modifique, exclua ou adicione novos objetos a este array para alterar sua loja!
+        // ONDE EDITAR OS PRODUTOS (Divididos em 4 categorias com 6 produtos cada):
         // =========================================================================
-        const products = [
-            {
-                id: 1,                                        // ID único (não repetir)
-                name: "Fone de Ouvido Bluetooth Sem Fio",     // Nome do produto
-                price: 189.90,                                // Preço (use ponto para centavos)
-                description: "Fone com cancelamento de ruído ativo, bateria de até 24h e conexão rápida Bluetooth 5.3.", // Descrição
-                image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&q=80" // Link da imagem
+        const categoriesData = {
+            eletronicos: {
+                title: "Eletrônicos",
+                products: [
+                    { id: 101, name: "Fone de Ouvido Bluetooth Sem Fio", price: 189.90, description: "Fone com cancelamento de ruído ativo, bateria de até 24h e conexão rápida Bluetooth 5.3.", image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&q=80" },
+                    { id: 102, name: "Smartwatch Esportivo AMOLED", price: 299.00, description: "Relógio inteligente com monitoramento cardíaco, GPS integrado e resistência à água (5 ATM).", image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=80" },
+                    { id: 103, name: "Mochila Urbana Impermeável", price: 149.50, description: "Mochila resistente para notebook de até 15.6\", com compartimento antifurto e entrada USB.", image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&q=80" },
+                    { id: 104, name: "Teclado Mecânico RGB Compacto", price: 239.90, description: "Teclado switch azul, iluminação RGB customizável e layout 60% ideal para jogos e trabalho.", image: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=600&q=80" },
+                    { id: 105, name: "Garrafa Térmica Inox 1L", price: 79.90, description: "Mantém bebidas geladas por 24 horas e quentes por 12 horas. Livre de BPA com tampa hermética.", image: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=600&q=80" },
+                    { id: 106, name: "Carregador Rápido GaN 65W", price: 119.00, description: "Carregador compacto com 3 saídas (2x USB-C + 1x USB-A), compatível com notebooks e celulares.", image: "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=600&q=80" }
+                ]
             },
-            {
-                id: 2,
-                name: "Smartwatch Esportivo AMOLED",
-                price: 299.00,
-                description: "Relógio inteligente com monitoramento cardíaco, GPS integrado e resistência à água (5 ATM).",
-                image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=80"
+            roupas: {
+                title: "Roupas",
+                products: [
+                    { id: 201, name: "Camiseta Básica Premium Algodão", price: 69.90, description: "Camiseta 100% algodão penteado, toque macio, modelagem moderna e alta durabilidade.", image: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=600&q=80" },
+                    { id: 202, name: "Jaqueta Jeans Casual Slim", price: 219.90, description: "Jaqueta jeans com lavagem clássica, bolsos frontais e ótimo caimento para qualquer ocasião.", image: "https://images.unsplash.com/photo-1576995853123-5a10305d93c0?w=600&q=80" },
+                    { id: 203, name: "Calça Jeans Comfort Stretch", price: 159.90, description: "Calça com elastano para maior flexibilidade e conforto durante todo o dia.", image: "https://images.unsplash.com/photo-1542272604-787c3835535d?w=600&q=80" },
+                    { id: 204, name: "Moletom Canguru com Capuz", price: 179.90, description: "Moletom flanelado por dentro, super quentinho, capuz ajustável e bolso frontal.", image: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=600&q=80" },
+                    { id: 205, name: "Camisa Polo Casual Piquet", price: 89.90, description: "Camisa polo em tecido piquet respirável, ideal para um visual casual ou corporativo leve.", image: "https://images.unsplash.com/photo-1625910513411-57d451242337?w=600&q=80" },
+                    { id: 206, name: "Blazer Slim Fit Elegante", price: 289.00, description: "Blazer com corte alfaiataria moderno, tecido estruturado e forro interno confortável.", image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&q=80" }
+                ]
             },
-            {
-                id: 3,
-                name: "Mochila Urbana Impermeável",
-                price: 149.50,
-                description: "Mochila resistente para notebook de até 15.6\", com compartimento antifurto e entrada USB.",
-                image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&q=80"
+            calcados: {
+                title: "Calçados",
+                products: [
+                    { id: 301, name: "Tênis Esportivo Running Pro", price: 259.90, description: "Tênis leve com solado amortecedor em EVA, cabedal em tecido respirável para corridas.", image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80" },
+                    { id: 302, name: "Tênis Casual Urban Leather", price: 199.00, description: "Tênis casual em material sintético de alta qualidade, versátil para o dia a dia.", image: "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=600&q=80" },
+                    { id: 303, name: "Sapato Social Couro Comfort", price: 249.00, description: "Sapato em couro legítimo, solado emborrachado antiderrapante e palmilha anatômica.", image: "https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?w=600&q=80" },
+                    { id: 304, name: "Chinelo Nuvem Anatômico", price: 59.90, description: "Sandália chinelo ultra macia feita em EVA expandido, alivia o cansaço dos pés.", image: "https://images.unsplash.com/photo-1603808033192-082d6919d3e1?w=600&q=80" },
+                    { id: 305, name: "Bota Cano Curto Adventure", price: 299.90, description: "Bota resistente à água com solado tratorado, perfeita para trilhas e uso urbano.", image: "https://images.unsplash.com/photo-1520639888713-7851133b1ed0?w=600&q=80" },
+                    { id: 306, name: "Tênis Slip-on Prático", price: 139.90, description: "Tênis sem cadarço, fácil de calçar, leve e ideal para caminhadas rápidas.", image: "https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=600&q=80" }
+                ]
             },
-            {
-                id: 4,
-                name: "Teclado Mecânico RGB Compacto",
-                price: 239.90,
-                description: "Teclado switch azul, iluminação RGB customizável e layout 60% ideal para jogos e trabalho.",
-                image: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=600&q=80"
-            },
-            {
-                id: 5,
-                name: "Garrafa Térmica Inox 1L",
-                price: 79.90,
-                description: "Mantém bebidas geladas por 24 horas e quentes por 12 horas. Livre de BPA com tampa hermética.",
-                image: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=600&q=80"
-            },
-            {
-                id: 6,
-                name: "Carregador Rápido GaN 65W",
-                price: 119.00,
-                description: "Carregador compacto com 3 saídas (2x USB-C + 1x USB-A), compatível com notebooks e celulares.",
-                image: "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=600&q=80"
+            lar: {
+                title: "Para o Lar",
+                products: [
+                    { id: 401, name: "Cafeteira Elétrica Programável", price: 199.90, description: "Faz até 1.5L de café, jarra de vidro resistente e função corta-pingos.", image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=600&q=80" },
+                    { id: 402, name: "Kit Potes Herméticos Vidro (4 pçs)", price: 119.90, description: "Potes de vidro borossilicato com tampa hermética de bambu. Vão ao forno e micro-ondas.", image: "https://images.unsplash.com/photo-1584269600464-37b1b58a9fe7?w=600&q=80" },
+                    { id: 403, name: "Luminária de Mesa LED Touch", price: 89.00, description: "Luminária articulável com ajuste de intensidade de luz e temperatura de cor.", image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=600&q=80" },
+                    { id: 404, name: "Jogo de Toalhas Banho Algodão (5 pçs)", price: 149.00, description: "Toalhas felpudas de alta absorção, toque extremamente macio e durável.", image: "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=600&q=80" },
+                    { id: 405, name: "Umidificador de Ar Ultrassônico", price: 99.90, description: "Silencioso, com luz noturna LED e autonomia de até 10 horas contínuas.", image: "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=600&q=80" },
+                    { id: 406, name: "Air Fryer Digital 4L", price: 349.00, description: "Fritadeira sem óleo com painel touch, timer sonoro e cesto antiaderente removível.", image: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=600&q=80" }
+                ]
             }
-        ];
+        };
 
-        // Estado Global do Carrinho (Armazena os itens selecionados pelo usuário em memória)
+        // Estado Atual da Aplicação
+        let currentCategoryKey = 'eletronicos';
         let cart = [];
 
-        // EVENTO DE INICIALIZAÇÃO: Executado assim que a página é carregada totalmente
+        // Inicialização ao carregar a página
         window.addEventListener('DOMContentLoaded', () => {
-            renderProducts(products); // Desenha a grade inicial de produtos
-            updateCartUI();            // Atualiza a interface do carrinho (que inicia vazio)
+            loadCategory(currentCategoryKey);
+            updateCartUI();
         });
 
-        // FUNÇÃO AUXILIAR: Converte valores numéricos em moeda brasileira (R$)
+        // Função para alternar de categoria ao clicar nos círculos
+        function selectCategory(categoryKey) {
+            currentCategoryKey = categoryKey;
+            
+            // Atualiza a borda e destaque visual dos círculos
+            ['eletronicos', 'roupas', 'calcados', 'lar'].forEach(key => {
+                const btn = document.getElementById(`cat-btn-${key}`);
+                const label = btn.nextElementSibling;
+                if (key === categoryKey) {
+                    btn.classList.add('border-indigo-600');
+                    btn.classList.remove('border-transparent');
+                    label.classList.add('text-indigo-600', 'font-bold');
+                    label.classList.remove('text-slate-600', 'font-semibold');
+                } else {
+                    btn.classList.remove('border-indigo-600');
+                    btn.classList.add('border-transparent');
+                    label.classList.remove('text-indigo-600', 'font-bold');
+                    label.classList.add('text-slate-600', 'font-semibold');
+                }
+            });
+
+            // Limpa o campo de busca e carrega os produtos da nova categoria
+            document.getElementById('search-input').value = '';
+            loadCategory(categoryKey);
+        }
+
+        // Carrega os produtos da categoria selecionada
+        function loadCategory(key) {
+            const category = categoriesData[key];
+            document.getElementById('current-category-title').textContent = category.title;
+            document.getElementById('search-results-info').textContent = `Mostrando 6 produtos desta categoria`;
+            renderProducts(category.products);
+        }
+
+        // Formatação de Moeda
         function formatMoney(amount) {
             return amount.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
         }
 
-        // FUNÇÃO: Constrói e exibe os cards HTML de cada produto na grade principal
+        // Renderiza os cards de produtos na grade
         function renderProducts(items) {
             const grid = document.getElementById('products-grid');
             const emptySearch = document.getElementById('empty-search');
 
-            // Se a busca não encontrar nada, exibe mensagem de estado vazio
             if (items.length === 0) {
                 grid.innerHTML = '';
                 emptySearch.classList.remove('hidden');
@@ -314,11 +371,8 @@
             }
 
             emptySearch.classList.add('hidden');
-            
-            // Mapeia o array de produtos transformando cada um em um card HTML
             grid.innerHTML = items.map(product => `
                 <div class="bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden group">
-                    <!-- Imagem do Produto -->
                     <div class="relative overflow-hidden bg-slate-100 pt-[75%]">
                         <img 
                             src="${product.image}" 
@@ -328,8 +382,6 @@
                             onerror="this.src='https://placehold.co/600x400/e2e8f0/475569?text=Produto'"
                         />
                     </div>
-                    
-                    <!-- Informações do Produto (Nome, Descrição, Preço e Botão) -->
                     <div class="p-5 flex flex-col flex-grow">
                         <h3 class="font-bold text-slate-800 text-base leading-snug mb-2 group-hover:text-indigo-600 transition-colors">
                             ${product.name}
@@ -337,14 +389,11 @@
                         <p class="text-xs text-slate-500 line-clamp-2 mb-4 flex-grow">
                             ${product.description}
                         </p>
-                        
                         <div class="pt-3 border-t border-slate-100 flex items-center justify-between gap-2 mt-auto">
                             <div>
                                 <span class="text-xs text-slate-400 block font-medium">Preço</span>
                                 <span class="text-lg font-extrabold text-slate-900">${formatMoney(product.price)}</span>
                             </div>
-                            
-                            <!-- Botão "Comprar" com acionamento do evento addToCart() -->
                             <button 
                                 onclick="addToCart(${product.id})" 
                                 class="px-3.5 py-2.5 bg-indigo-600 hover:bg-indigo-700 active:scale-95 text-white text-xs font-semibold rounded-xl flex items-center gap-1.5 transition-all shadow-md shadow-indigo-100"
@@ -358,38 +407,52 @@
             `).join('');
         }
 
-        // FUNÇÃO DE BUSCA: Filtra os produtos pelo nome ou pela descrição em tempo real
+        // Filtro de busca global (procura em todas as categorias)
         function filterProducts() {
             const query = document.getElementById('search-input').value.toLowerCase().trim();
-            const filtered = products.filter(p => 
+            
+            // Junta todos os produtos de todas as categorias em um único array para busca geral
+            const allProducts = [
+                ...categoriesData.eletronicos.products,
+                ...categoriesData.roupas.products,
+                ...categoriesData.calcados.products,
+                ...categoriesData.lar.products
+            ];
+
+            const filtered = allProducts.filter(p => 
                 p.name.toLowerCase().includes(query) || 
                 p.description.toLowerCase().includes(query)
             );
             
             const resultsInfo = document.getElementById('search-results-info');
             if (query) {
-                resultsInfo.textContent = `Resultados para "${query}" (${filtered.length})`;
+                document.getElementById('current-category-title').textContent = "Resultados da Busca";
+                resultsInfo.textContent = `Encontrados ${filtered.length} produto(s) para "${query}"`;
+                renderProducts(filtered);
             } else {
-                resultsInfo.textContent = 'Mostrando todos os produtos';
+                loadCategory(currentCategoryKey);
             }
-
-            renderProducts(filtered);
         }
 
-        // FUNÇÃO: Reseta o campo de busca e restaura a exibição de todos os produtos
-        function resetSearch() {
+        // Reseta para a categoria ativa padrão
+        function resetToHome() {
             document.getElementById('search-input').value = '';
-            document.getElementById('search-results-info').textContent = 'Mostrando todos os produtos';
-            renderProducts(products);
+            loadCategory(currentCategoryKey);
         }
 
-        // FUNÇÃO: Adiciona um item ao carrinho ou incrementa sua quantidade caso já exista
+        // Adiciona ao carrinho
         function addToCart(productId) {
-            const product = products.find(p => p.id === productId);
+            const allProducts = [
+                ...categoriesData.eletronicos.products,
+                ...categoriesData.roupas.products,
+                ...categoriesData.calcados.products,
+                ...categoriesData.lar.products
+            ];
+            
+            const product = allProducts.find(p => p.id === productId);
             if (!product) return;
 
             const existingItem = cart.find(item => item.id === productId);
-
             if (existingItem) {
                 existingItem.quantity += 1;
             } else {
@@ -400,14 +463,12 @@
             showToast(`"${product.name}" foi adicionado!`);
         }
 
-        // FUNÇÃO: Altera a quantidade de um produto dentro do carrinho (+1 ou -1)
+        // Atualiza quantidade no carrinho
         function updateQuantity(productId, change) {
             const item = cart.find(i => i.id === productId);
             if (!item) return;
 
             item.quantity += change;
-
-            // Se a quantidade zerar, remove o item do carrinho
             if (item.quantity <= 0) {
                 removeFromCart(productId);
             } else {
@@ -415,25 +476,23 @@
             }
         }
 
-        // FUNÇÃO: Remove completamente um item do carrinho
+        // Remove do carrinho
         function removeFromCart(productId) {
             cart = cart.filter(item => item.id !== productId);
             updateCartUI();
         }
 
-        // FUNÇÃO CENTRAL DA UI: Recalcula totais, badges e renderiza o HTML interno do carrinho
+        // Atualiza interface do carrinho
         function updateCartUI() {
             const totalItemsCount = cart.reduce((sum, item) => sum + item.quantity, 0);
             const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
-            // Atualiza os contadores numéricos (Badges)
             const cartCountBadge = document.getElementById('cart-count');
             const drawerBadge = document.getElementById('cart-drawer-badge');
 
             cartCountBadge.textContent = totalItemsCount;
             drawerBadge.textContent = `${totalItemsCount} ${totalItemsCount === 1 ? 'item' : 'itens'}`;
 
-            // Controla a animação de visibilidade do contador no topo
             if (totalItemsCount > 0) {
                 cartCountBadge.classList.remove('scale-0');
                 cartCountBadge.classList.add('scale-100');
@@ -442,11 +501,9 @@
                 cartCountBadge.classList.add('scale-0');
             }
 
-            // Atualiza os valores financeiros nos campos correspondentes
             document.getElementById('cart-subtotal').textContent = formatMoney(subtotal);
             document.getElementById('cart-total').textContent = formatMoney(subtotal);
 
-            // Alterna a exibição do carrinho entre "Com Itens" e "Carrinho Vazio"
             const itemsContainer = document.getElementById('cart-items');
             const emptyState = document.getElementById('cart-empty-state');
             const footer = document.getElementById('cart-footer');
@@ -460,16 +517,12 @@
                 emptyState.classList.add('hidden');
                 footer.classList.remove('hidden');
 
-                // Renderiza a lista de produtos presentes no carrinho
                 itemsContainer.innerHTML = cart.map(item => `
                     <div class="flex items-center gap-3 p-3 bg-slate-50 rounded-xl border border-slate-100">
                         <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded-lg bg-white flex-shrink-0" />
-                        
                         <div class="flex-grow min-w-0">
                             <h4 class="text-xs font-bold text-slate-800 truncate">${item.name}</h4>
-                            <span class="text-xs font-extrabold text-indigo-600 block mt-0.5">${formatMoney(item.price)}</span>
-                            
-                            <!-- Botões de controle de quantidade -->
+                            <span class="text-xs font-extrabold text-indigo-600 block mt-0.5">${formatMessage = formatMoney(item.price)}</span>
                             <div class="flex items-center gap-2 mt-2">
                                 <div class="flex items-center border border-slate-200 bg-white rounded-lg">
                                     <button onclick="updateQuantity(${item.id}, -1)" class="w-6 h-6 flex items-center justify-center text-slate-500 hover:text-slate-800 text-xs">
@@ -482,8 +535,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Botão para excluir o item -->
                         <button onclick="removeFromCart(${item.id})" class="p-2 text-slate-400 hover:text-rose-500 transition-colors">
                             <i class="fa-solid fa-trash-can text-sm"></i>
                         </button>
@@ -492,7 +543,7 @@
             }
         }
 
-        // FUNÇÃO: Controla a abertura e o fechamento do painel lateral do carrinho
+        // Abre/Fecha Carrinho
         function toggleCart(open) {
             const drawer = document.getElementById('cart-drawer');
             const overlay = document.getElementById('cart-drawer-overlay');
@@ -500,7 +551,7 @@
             if (open) {
                 overlay.classList.remove('opacity-0', 'pointer-events-none');
                 drawer.classList.remove('translate-x-full');
-                document.body.classList.add('overflow-hidden'); // Bloqueia a rolagem da página ao fundo
+                document.body.classList.add('overflow-hidden');
             } else {
                 overlay.classList.add('opacity-0', 'pointer-events-none');
                 drawer.classList.add('translate-x-full');
@@ -508,7 +559,7 @@
             }
         }
 
-        // FUNÇÃO: Exibe um aviso temporário (Toast notification) na parte inferior da tela
+        // Exibe Toast
         function showToast(message) {
             const toast = document.getElementById('toast');
             const toastMsg = document.getElementById('toast-message');
@@ -521,17 +572,13 @@
             }, 3000);
         }
 
-        // FUNÇÃO: Simula a finalização do pedido de compra
+        // Checkout
         function checkout() {
             if (cart.length === 0) return;
-
             const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            
-            // Limpa o carrinho após finalizar
             cart = [];
             updateCartUI();
             toggleCart(false);
-
             showToast(`Pedido realizado com sucesso! Total: ${formatMoney(total)}`);
         }
     </script>
