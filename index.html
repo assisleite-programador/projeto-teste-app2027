@@ -5,9 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TechStore - Sua Loja Multi-Categorias</title>
     
-    <!-- 1. IMPORTAÇÃO DAS BIBLIOTECAS -->
+    <!-- 1. CONFIGURAÇÕES PWA (Para permitir instalar o app no celular) -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4f46e5">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="TechStore">
+    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/3081/3081559.png">
+
+    <!-- 2. IMPORTAÇÃO DAS BIBLIOTECAS VISUAIS -->
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- ESTILOS ADICIONAIS -->
@@ -15,6 +26,7 @@
         body {
             font-family: 'Inter', sans-serif;
         }
+        /* Scrollbar customizada para o carrinho */
         .custom-scrollbar::-webkit-scrollbar {
             width: 6px;
         }
@@ -28,7 +40,7 @@
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
             background: #94a3b8;
         }
-        /* Esconde a barra de rolagem horizontal das categorias mantendo a função de deslizar no celular */
+        /* Esconde barra de rolagem horizontal das categorias */
         .no-scrollbar::-webkit-scrollbar {
             display: none;
         }
@@ -110,12 +122,12 @@
             </div>
         </div>
 
-        <!-- MENU DE CATEGORIAS EM CÍRCULOS (6 Categoria Nichos) -->
+        <!-- MENU DE CATEGORIAS EM CÍRCULOS -->
         <div class="mb-10">
             <h3 class="text-sm font-bold uppercase tracking-wider text-slate-400 mb-4">Navegue por Categorias</h3>
             <div class="flex items-center gap-6 overflow-x-auto pb-3 no-scrollbar">
                 
-                <!-- Categoria 1: Eletrônicos -->
+                <!-- 1. Eletrônicos -->
                 <button onclick="selectCategory('eletronicos')" class="group flex flex-col items-center flex-shrink-0 focus:outline-none">
                     <div id="cat-btn-eletronicos" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white border-2 border-indigo-600 shadow-md group-hover:scale-105 transition-all overflow-hidden flex items-center justify-center">
                         <img src="https://images.unsplash.com/photo-1526738549149-8e07eca6c147?w=300&q=80" alt="Eletrônicos" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
@@ -123,7 +135,7 @@
                     <span class="mt-2 text-xs sm:text-sm font-bold text-indigo-600">Eletrônicos</span>
                 </button>
 
-                <!-- Categoria 2: Roupas -->
+                <!-- 2. Roupas -->
                 <button onclick="selectCategory('roupas')" class="group flex flex-col items-center flex-shrink-0 focus:outline-none">
                     <div id="cat-btn-roupas" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white border-2 border-transparent shadow-md group-hover:scale-105 transition-all overflow-hidden flex items-center justify-center">
                         <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?w=300&q=80" alt="Roupas" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
@@ -131,7 +143,7 @@
                     <span class="mt-2 text-xs sm:text-sm font-semibold text-slate-600 group-hover:text-indigo-600">Roupas</span>
                 </button>
 
-                <!-- Categoria 3: Calçados -->
+                <!-- 3. Calçados -->
                 <button onclick="selectCategory('calcados')" class="group flex flex-col items-center flex-shrink-0 focus:outline-none">
                     <div id="cat-btn-calcados" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white border-2 border-transparent shadow-md group-hover:scale-105 transition-all overflow-hidden flex items-center justify-center">
                         <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300&q=80" alt="Calçados" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
@@ -139,7 +151,7 @@
                     <span class="mt-2 text-xs sm:text-sm font-semibold text-slate-600 group-hover:text-indigo-600">Calçados</span>
                 </button>
 
-                <!-- Categoria 4: Para o Lar -->
+                <!-- 4. Para o Lar -->
                 <button onclick="selectCategory('lar')" class="group flex flex-col items-center flex-shrink-0 focus:outline-none">
                     <div id="cat-btn-lar" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white border-2 border-transparent shadow-md group-hover:scale-105 transition-all overflow-hidden flex items-center justify-center">
                         <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=300&q=80" alt="Para o Lar" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
@@ -147,7 +159,7 @@
                     <span class="mt-2 text-xs sm:text-sm font-semibold text-slate-600 group-hover:text-indigo-600">Para o Lar</span>
                 </button>
 
-                <!-- Categoria 5: Academia -->
+                <!-- 5. Academia -->
                 <button onclick="selectCategory('academia')" class="group flex flex-col items-center flex-shrink-0 focus:outline-none">
                     <div id="cat-btn-academia" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white border-2 border-transparent shadow-md group-hover:scale-105 transition-all overflow-hidden flex items-center justify-center">
                         <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=300&q=80" alt="Academia" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
@@ -155,7 +167,7 @@
                     <span class="mt-2 text-xs sm:text-sm font-semibold text-slate-600 group-hover:text-indigo-600">Academia</span>
                 </button>
 
-                <!-- Categoria 6: Suplementos -->
+                <!-- 6. Suplementos -->
                 <button onclick="selectCategory('suplementos')" class="group flex flex-col items-center flex-shrink-0 focus:outline-none">
                     <div id="cat-btn-suplementos" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white border-2 border-transparent shadow-md group-hover:scale-105 transition-all overflow-hidden flex items-center justify-center">
                         <img src="https://images.unsplash.com/photo-1579722821273-0f6c7d44362f?w=300&q=80" alt="Suplementos" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
@@ -176,10 +188,10 @@
 
         <!-- GRADE DE PRODUTOS RESPONSIVA -->
         <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            <!-- Os cards são gerados via JavaScript -->
+            <!-- Cards inseridos via JS -->
         </div>
 
-        <!-- ESTADO VAZIO (Busca sem resultados) -->
+        <!-- ESTADO VAZIO -->
         <div id="empty-search" class="hidden text-center py-16">
             <div class="w-16 h-16 bg-slate-100 text-slate-400 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -213,7 +225,7 @@
     </footer>
 
     <!-- ========================================================================= -->
-    <!-- PAINEL LATERAL DO CARRINHO (DRAWER) -->
+    <!-- PAINEL LATERAL DO CARRINHO -->
     <!-- ========================================================================= -->
     <div id="cart-drawer-overlay" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300" onclick="toggleCart(false)"></div>
     
@@ -273,12 +285,10 @@
     </div>
 
     <!-- ========================================================================= -->
-    <!-- LÓGICA JAVASCRIPT & BANCO DE DADOS DOS PRODUTOS POR CATEGORIA -->
+    <!-- LÓGICA JAVASCRIPT DA APLICAÇÃO -->
     <!-- ========================================================================= -->
     <script>
-        // =========================================================================
-        // BANCO DE DADOS (6 categorias com 6 produtos cada = 36 produtos)
-        // =========================================================================
+        // BANCO DE DADOS DOS PRODUTOS (6 categorias com 6 produtos cada)
         const categoriesData = {
             eletronicos: {
                 title: "Eletrônicos",
@@ -348,21 +358,20 @@
             }
         };
 
-        // Estado Atual da Aplicação
+        // Estado Atual
         let currentCategoryKey = 'eletronicos';
         let cart = [];
 
-        // Inicialização ao carregar a página
+        // Inicialização
         window.addEventListener('DOMContentLoaded', () => {
             loadCategory(currentCategoryKey);
             updateCartUI();
         });
 
-        // Função para alternar de categoria ao clicar nos círculos
+        // Alternar Categoria
         function selectCategory(categoryKey) {
             currentCategoryKey = categoryKey;
             
-            // Atualiza o destaque visual dos botões circulares das 6 categorias
             ['eletronicos', 'roupas', 'calcados', 'lar', 'academia', 'suplementos'].forEach(key => {
                 const btn = document.getElementById(`cat-btn-${key}`);
                 if (!btn) return;
@@ -380,12 +389,11 @@
                 }
             });
 
-            // Limpa o campo de busca e carrega os produtos da nova categoria
             document.getElementById('search-input').value = '';
             loadCategory(categoryKey);
         }
 
-        // Carrega os produtos da categoria selecionada
+        // Carregar Categoria
         function loadCategory(key) {
             const category = categoriesData[key];
             document.getElementById('current-category-title').textContent = category.title;
@@ -393,12 +401,12 @@
             renderProducts(category.products);
         }
 
-        // Formatação de Moeda
+        // Formatador de Moeda
         function formatMoney(amount) {
             return amount.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
         }
 
-        // Renderiza os cards de produtos na grade
+        // Renderizar Produtos
         function renderProducts(items) {
             const grid = document.getElementById('products-grid');
             const emptySearch = document.getElementById('empty-search');
@@ -446,12 +454,12 @@
             `).join('');
         }
 
-        // Função auxiliar para juntar todos os produtos de todas as categorias
+        // Obter Todos os Produtos
         function getAllProducts() {
             return Object.values(categoriesData).flatMap(cat => cat.products);
         }
 
-        // Filtro de busca global (procura em todas as 6 categorias)
+        // Filtrar Busca
         function filterProducts() {
             const query = document.getElementById('search-input').value.toLowerCase().trim();
             const allProducts = getAllProducts();
@@ -471,13 +479,13 @@
             }
         }
 
-        // Reseta para a categoria ativa padrão
+        // Resetar para Inicio
         function resetToHome() {
             document.getElementById('search-input').value = '';
             loadCategory(currentCategoryKey);
         }
 
-        // Adiciona ao carrinho
+        // Adicionar ao Carrinho
         function addToCart(productId) {
             const allProducts = getAllProducts();
             const product = allProducts.find(p => p.id === productId);
@@ -494,7 +502,7 @@
             showToast(`"${product.name}" foi adicionado!`);
         }
 
-        // Atualiza quantidade no carrinho
+        // Atualizar Quantidade
         function updateQuantity(productId, change) {
             const item = cart.find(i => i.id === productId);
             if (!item) return;
@@ -507,13 +515,13 @@
             }
         }
 
-        // Remove do carrinho
+        // Remover do Carrinho
         function removeFromCart(productId) {
             cart = cart.filter(item => item.id !== productId);
             updateCartUI();
         }
 
-        // Atualiza interface do carrinho
+        // Atualizar Interface do Carrinho
         function updateCartUI() {
             const totalItemsCount = cart.reduce((sum, item) => sum + item.quantity, 0);
             const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
@@ -574,7 +582,7 @@
             }
         }
 
-        // Abre/Fecha Carrinho
+        // Alternar Gaveta do Carrinho
         function toggleCart(open) {
             const drawer = document.getElementById('cart-drawer');
             const overlay = document.getElementById('cart-drawer-overlay');
@@ -590,7 +598,7 @@
             }
         }
 
-        // Exibe Toast
+        // Exibir Notificação Toast
         function showToast(message) {
             const toast = document.getElementById('toast');
             const toastMsg = document.getElementById('toast-message');
@@ -603,7 +611,7 @@
             }, 3000);
         }
 
-        // Checkout
+        // Finalizar Compra
         function checkout() {
             if (cart.length === 0) return;
             const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
@@ -611,6 +619,15 @@
             updateCartUI();
             toggleCart(false);
             showToast(`Pedido realizado com sucesso! Total: ${formatMoney(total)}`);
+        }
+
+        // REGISTRO DO SERVICE WORKER (Ativa a instalação como PWA no celular)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(reg => console.log('Service Worker PWA Registrado!'))
+                    .catch(err => console.log('Erro PWA:', err));
+            });
         }
     </script>
 </body>
