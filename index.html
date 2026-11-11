@@ -26,7 +26,7 @@
 </head>
 <body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen">
 
-    <!-- CABEÇALHO / NAVBAR (Sem o botão do carrinho) -->
+    <!-- CABEÇALHO / NAVBAR (Sem carrinho) -->
     <header class="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16 gap-4">
@@ -162,7 +162,7 @@
 
     <!-- JAVASCRIPT -->
     <script>
-        // BANCO DE DADOS: Altere a propriedade "url" de cada produto para colocar o link da sua página/afiliado
+        // BANCO DE DADOS: Altere a propriedade "url" de cada produto para colocar o link da Shopee, Mercado Livre, etc.
         const categoriesData = {
             eletronicos: {
                 title: "Eletrônicos",
@@ -271,7 +271,7 @@
             return amount.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
         }
 
-        // RENDERIZAÇÃO DOS PRODUTOS COM O BOTÃO DIRECIONANDO PARA O LINK DA LOJA
+        // RENDERIZAÇÃO: O botão "Comprar" agora é uma tag <a> que abre diretamente o link do produto
         function renderProducts(items) {
             const grid = document.getElementById('products-grid');
             const emptySearch = document.getElementById('empty-search');
@@ -308,14 +308,14 @@
                                 <span class="text-lg font-extrabold text-slate-900">${formatMoney(product.price)}</span>
                             </div>
                             
-                            <!-- O BOTÃO DE COMPRAR LEVA DIRETO PARA O LINK CONFIGURADO NA PROPRIEDADE URL -->
+                            <!-- BOTÃO COM LINK DIRETO PARA A PÁGINA DO VENDEDOR -->
                             <a 
                                 href="${product.url}" 
                                 target="_blank" 
                                 rel="noopener noreferrer"
                                 class="px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 active:scale-95 text-white text-xs font-semibold rounded-xl flex items-center gap-1.5 transition-all shadow-md shadow-indigo-100"
                             >
-                                <i class="fa-solid fa-cart-shopping text-xs"></i>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
                                 <span>Comprar</span>
                             </a>
                         </div>
@@ -347,7 +347,7 @@
             loadCategory(currentCategoryKey);
         }
 
-        // REGISTRAR SERVICE WORKER PARA PWA
+        // REGISTRAR SERVICE WORKER PARA PWA (Instalação no celular)
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('sw.js')
