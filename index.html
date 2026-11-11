@@ -1,0 +1,580 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#102b46">
+  <title>Minha Loja | Materiais</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f6fa;
+      color: #243447;
+    }
+
+    header {
+      background: #102b46;
+      color: white;
+      padding: 22px 6%;
+    }
+
+    .topo {
+      max-width: 1250px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    .logo span {
+      color: #35d18a;
+    }
+
+    .whatsapp-topo {
+      background: #25d366;
+      color: white;
+      padding: 12px 18px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .hero {
+      background: linear-gradient(120deg, #102b46, #205b83);
+      color: white;
+      padding: 55px 6%;
+    }
+
+    .hero-conteudo {
+      max-width: 1250px;
+      margin: auto;
+    }
+
+    .hero h1 {
+      font-size: clamp(27px, 5vw, 43px);
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      color: #d7e7f4;
+      line-height: 1.6;
+    }
+
+    main {
+      max-width: 1250px;
+      margin: 35px auto;
+      padding: 0 20px;
+    }
+
+    .resumo {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .resumo-card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 3px 12px #00000008;
+    }
+
+    .resumo-card small {
+      color: #738399;
+    }
+
+    .resumo-card strong {
+      display: block;
+      font-size: 25px;
+      margin-top: 8px;
+      color: #102b46;
+    }
+
+    .filtros {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 25px;
+      flex-wrap: wrap;
+    }
+
+    input, select {
+      padding: 14px;
+      border: 1px solid #dce3eb;
+      border-radius: 9px;
+      background: white;
+      font-size: 15px;
+      outline: none;
+    }
+
+    input:focus, select:focus {
+      border-color: #2876ae;
+    }
+
+    #busca {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .produtos {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .produto {
+      background: white;
+      border-radius: 13px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px #0000000c;
+      transition: .2s;
+    }
+
+    .produto:hover {
+      transform: translateY(-4px);
+    }
+
+    .foto {
+      height: 185px;
+      width: 100%;
+      background: #e6eef5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      font-size: 55px;
+    }
+
+    .foto img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .produto-info {
+      padding: 18px;
+    }
+
+    .categoria {
+      color: #2876ae;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .produto h3 {
+      margin: 9px 0;
+      color: #102b46;
+    }
+
+    .descricao {
+      color: #718096;
+      font-size: 14px;
+      line-height: 1.5;
+      min-height: 42px;
+    }
+
+    .preco {
+      color: #13965d;
+      font-size: 23px;
+      font-weight: bold;
+      margin: 15px 0;
+    }
+
+    .local {
+      background: #f0f5fa;
+      padding: 10px;
+      border-radius: 7px;
+      font-size: 13px;
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+
+    .estoque {
+      font-size: 13px;
+      margin-bottom: 15px;
+    }
+
+    .disponivel {
+      color: #13965d;
+      font-weight: bold;
+    }
+
+    .esgotado {
+      color: #dc4545;
+      font-weight: bold;
+    }
+
+    .comprar {
+      display: block;
+      background: #25d366;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      padding: 13px;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    .comprar:hover {
+      background: #1eae55;
+    }
+
+    .comprar:focus-visible {
+      outline: 3px solid #102b46;
+      outline-offset: 3px;
+    }
+
+    .mensagem {
+      text-align: center;
+      padding: 45px 15px;
+      color: #718096;
+      grid-column: 1 / -1;
+    }
+
+    footer {
+      margin-top: 50px;
+      background: #102b46;
+      color: white;
+      padding: 30px 15px;
+      text-align: center;
+      line-height: 1.8;
+    }
+
+    @media(max-width: 850px) {
+      .produtos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media(max-width: 550px) {
+      .produtos {
+        grid-template-columns: 1fr;
+      }
+
+      .resumo {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 40px 20px;
+      }
+
+      .topo {
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="topo">
+    <div class="logo">MINHA<span>LOJA</span></div>
+    <a class="whatsapp-topo"
+       href="https://wa.me/5584988251134"
+       target="_blank">
+       Falar com vendedor
+    </a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-conteudo">
+    <h1>Encontre seus materiais!</h1>
+    <p>
+      Consulte produtos, preços, disponibilidade e localização
+      dos materiais em nosso estoque.
+    </p>
+  </div>
+</section>
+
+<main>
+
+  <section class="resumo">
+    <div class="resumo-card">
+      <small>Produtos cadastrados</small>
+      <strong id="totalProdutos">0</strong>
+    </div>
+
+    <div class="resumo-card">
+      <small>Unidades em estoque</small>
+      <strong id="totalEstoque">0</strong>
+    </div>
+
+    <div class="resumo-card">
+      <small>Categorias</small>
+      <strong id="totalCategorias">0</strong>
+    </div>
+  </section>
+
+  <h2 style="margin-bottom:18px">Nosso catálogo</h2>
+
+  <div class="filtros">
+    <input
+      type="search"
+      id="busca"
+      placeholder="Pesquisar materiais..."
+    >
+
+    <select id="filtroCategoria">
+      <option value="">Todas as categorias</option>
+    </select>
+  </div>
+
+  <section class="produtos" id="listaProdutos">
+    <div class="mensagem">Carregando produtos...</div>
+  </section>
+
+</main>
+
+<footer>
+  <h3>MINHA LOJA</h3>
+  <p>Materiais, qualidade e atendimento.</p>
+  <p>Vendas pelo WhatsApp: (84) 98825-1134</p>
+  <p>© 2026 - Todos os direitos reservados.</p>
+</footer>
+
+<script type="module">
+
+  import { initializeApp }
+  from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+
+  import {
+    getFirestore,
+    collection,
+    getDocs
+  } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
+  // CONFIGURAÇÃO FIREBASE
+  const firebaseConfig = {
+    apiKey: "AIzaSyBaoUIuPzxWWRfYi5yA6mR-yakc1f1ZzaY",
+    authDomain: "projeto-teste-2027.firebaseapp.com",
+    projectId: "projeto-teste-2027",
+    storageBucket: "projeto-teste-2027.firebasestorage.app",
+    messagingSenderId: "656064645546",
+    appId: "1:656064645546:web:c0b39c8517abec430a43d3",
+    measurementId: "G-PPWNLCSY9Q"
+  };
+
+  // INICIAR FIREBASE
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  const telefone = "5584988251134";
+
+  let produtos = [];
+
+  const lista = document.getElementById("listaProdutos");
+  const busca = document.getElementById("busca");
+  const categoria = document.getElementById("filtroCategoria");
+
+  // FORMATAR PREÇO
+  function formatarPreco(valor) {
+    return Number(valor || 0).toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL"
+    });
+  }
+
+  // PROTEGER TEXTO HTML
+  function escapar(texto) {
+    return String(texto ?? "").replace(/[&<>"']/g, letra => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    })[letra]);
+  }
+
+  // ATUALIZAR RESUMO
+  function atualizarResumo() {
+    document.getElementById("totalProdutos").textContent =
+      produtos.length;
+
+    document.getElementById("totalEstoque").textContent =
+      produtos.reduce((soma, p) => soma + Math.max(0, Number(p.estoque) || 0), 0);
+
+    document.getElementById("totalCategorias").textContent =
+      new Set(produtos.map(p => p.categoria).filter(Boolean)).size;
+  }
+
+  // CARREGAR CATEGORIAS
+  function carregarCategorias() {
+    const categorias = [...new Set(
+      produtos.map(p => p.categoria).filter(Boolean)
+    )];
+
+    categoria.innerHTML =
+      '<option value="">Todas as categorias</option>';
+
+    categorias.sort().forEach(cat => {
+      const option = document.createElement("option");
+      option.value = cat;
+      option.textContent = cat;
+      categoria.appendChild(option);
+    });
+  }
+
+  // GERAR CARD DO PRODUTO
+  function criarCard(p) {
+
+    const nome = escapar(p.nome);
+    const descricao = escapar(p.descricao);
+    const cat = escapar(p.categoria || "Materiais");
+    const localizacao = escapar(p.localizacao || "Não informada");
+    const estoque = Math.max(0, Number(p.estoque) || 0);
+    const preco = Number(p.preco) || 0;
+    const imagem = p.imagem || "";
+
+    const mensagem = encodeURIComponent(
+      `Olá! Tenho interesse neste produto:\n\n` +
+      `Produto: ${nome}\n` +
+      `Preço: ${formatarPreco(preco)}\n` +
+      `Gostaria de mais informações e disponibilidade.`
+    );
+
+    const link = `https://wa.me/${telefone}?text=${mensagem}`;
+
+    const imagemSegura = /^https?:\/\//i.test(imagem)
+      ? escapar(imagem)
+      : "";
+
+    return `
+      <article class="produto">
+
+        <div class="foto">
+          ${
+            imagemSegura
+            ? `<img src="${imagemSegura}" alt="${nome}" loading="lazy">`
+            : "📦"
+          }
+        </div>
+
+        <div class="produto-info">
+
+          <span class="categoria">${cat}</span>
+
+          <h3>${nome}</h3>
+
+          <p class="descricao">${descricao}</p>
+
+          <div class="preco">${formatarPreco(preco)}</div>
+
+          <div class="local">
+            📍 <strong>Localização:</strong><br>
+            ${localizacao}
+          </div>
+
+          <div class="estoque">
+            Estoque:
+            <span class="${estoque > 0 ? "disponivel" : "esgotado"}">
+              ${estoque > 0 ? estoque + " unidades disponíveis" : "Esgotado"}
+            </span>
+          </div>
+
+          <a
+            class="comprar"
+            href="${link}"
+            target="_blank"
+            rel="noopener noreferrer"
+            ${estoque <= 0 ? 'aria-disabled="true" onclick="return false" style="opacity:.5;pointer-events:none"' : ""}
+          >
+            ${estoque > 0 ? "Comprar pelo WhatsApp" : "Produto indisponível"}
+          </a>
+
+        </div>
+      </article>
+    `;
+  }
+
+  // MOSTRAR PRODUTOS
+  function renderizarProdutos() {
+
+    const termo = busca.value.toLowerCase().trim();
+    const cat = categoria.value;
+
+    const filtrados = produtos.filter(p => {
+
+      const nome = String(p.nome || "").toLowerCase();
+      const descricao = String(p.descricao || "").toLowerCase();
+      const local = String(p.localizacao || "").toLowerCase();
+
+      const correspondeTexto =
+        nome.includes(termo) ||
+        descricao.includes(termo) ||
+        local.includes(termo);
+
+      const correspondeCategoria =
+        !cat || p.categoria === cat;
+
+      return correspondeTexto && correspondeCategoria;
+    });
+
+    if (filtrados.length === 0) {
+      lista.innerHTML =
+        '<div class="mensagem">Nenhum produto encontrado.</div>';
+      return;
+    }
+
+    lista.innerHTML = filtrados.map(criarCard).join("");
+  }
+
+  // BUSCAR NO FIRESTORE
+  async function carregarProdutos() {
+
+    try {
+
+      const consulta = await getDocs(
+        collection(db, "produtos")
+      );
+
+      produtos = consulta.docs.map(documento => ({
+        id: documento.id,
+        ...documento.data()
+      }));
+
+      atualizarResumo();
+      carregarCategorias();
+      renderizarProdutos();
+
+    } catch (erro) {
+
+      console.error("Erro Firebase:", erro);
+
+      lista.innerHTML = `
+        <div class="mensagem">
+          <h3>Não foi possível carregar os produtos.</h3>
+          <p>Verifique a conexão e as regras do Firestore.</p>
+        </div>
+      `;
+    }
+  }
+
+  busca.addEventListener("input", renderizarProdutos);
+  categoria.addEventListener("change", renderizarProdutos);
+
+  // INICIAR APLICAÇÃO
+  carregarProdutos();
+
+</script>
+
+</body>
+</html>
