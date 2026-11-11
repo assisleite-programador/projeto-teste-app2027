@@ -110,7 +110,7 @@
             </div>
         </div>
 
-        <!-- MENU DE CATEGORIAS EM CÍRCULOS (Abaixo do Banner) -->
+        <!-- MENU DE CATEGORIAS EM CÍRCULOS (6 Categoria Nichos) -->
         <div class="mb-10">
             <h3 class="text-sm font-bold uppercase tracking-wider text-slate-400 mb-4">Navegue por Categorias</h3>
             <div class="flex items-center gap-6 overflow-x-auto pb-3 no-scrollbar">
@@ -145,6 +145,22 @@
                         <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=300&q=80" alt="Para o Lar" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
                     </div>
                     <span class="mt-2 text-xs sm:text-sm font-semibold text-slate-600 group-hover:text-indigo-600">Para o Lar</span>
+                </button>
+
+                <!-- Categoria 5: Academia -->
+                <button onclick="selectCategory('academia')" class="group flex flex-col items-center flex-shrink-0 focus:outline-none">
+                    <div id="cat-btn-academia" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white border-2 border-transparent shadow-md group-hover:scale-105 transition-all overflow-hidden flex items-center justify-center">
+                        <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=300&q=80" alt="Academia" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                    </div>
+                    <span class="mt-2 text-xs sm:text-sm font-semibold text-slate-600 group-hover:text-indigo-600">Academia</span>
+                </button>
+
+                <!-- Categoria 6: Suplementos -->
+                <button onclick="selectCategory('suplementos')" class="group flex flex-col items-center flex-shrink-0 focus:outline-none">
+                    <div id="cat-btn-suplementos" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white border-2 border-transparent shadow-md group-hover:scale-105 transition-all overflow-hidden flex items-center justify-center">
+                        <img src="https://images.unsplash.com/photo-1579722821273-0f6c7d44362f?w=300&q=80" alt="Suplementos" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+                    </div>
+                    <span class="mt-2 text-xs sm:text-sm font-semibold text-slate-600 group-hover:text-indigo-600">Suplementos</span>
                 </button>
 
             </div>
@@ -261,7 +277,7 @@
     <!-- ========================================================================= -->
     <script>
         // =========================================================================
-        // ONDE EDITAR OS PRODUTOS (Divididos em 4 categorias com 6 produtos cada):
+        // BANCO DE DADOS (6 categorias com 6 produtos cada = 36 produtos)
         // =========================================================================
         const categoriesData = {
             eletronicos: {
@@ -307,6 +323,28 @@
                     { id: 405, name: "Umidificador de Ar Ultrassônico", price: 99.90, description: "Silencioso, com luz noturna LED e autonomia de até 10 horas contínuas.", image: "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=600&q=80" },
                     { id: 406, name: "Air Fryer Digital 4L", price: 349.00, description: "Fritadeira sem óleo com painel touch, timer sonoro e cesto antiaderente removível.", image: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=600&q=80" }
                 ]
+            },
+            academia: {
+                title: "Academia",
+                products: [
+                    { id: 501, name: "Kit Halteres Sextavados 5kg (Par)", price: 129.90, description: "Par de halteres emborrachados ideais para treinos em casa ou na academia.", image: "https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?w=600&q=80" },
+                    { id: 502, name: "Kit Faixas Elásticas Mini Bands (5 Níveis)", price: 49.90, description: "Elásticos de resistência para fortalecimento muscular, fisioterapia e treino funcional.", image: "https://images.unsplash.com/photo-1598289431512-b97b0917affc?w=600&q=80" },
+                    { id: 503, name: "Tapete de Yoga / Pilates EVA Extra Macio", price: 79.90, description: "Tapete antiderrapante com espessura confortável para proteger articulações durante os treinos.", image: "https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?w=600&q=80" },
+                    { id: 504, name: "Corda de Pular de Alta Velocidade Speed Rope", price: 39.90, description: "Corda com rolamento duplo em aço ajustável, ideal para crossfit e exercícios aeróbicos.", image: "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&q=80" },
+                    { id: 505, name: "Luvas de Musculação com Cobertura de Pulso", price: 54.90, description: "Luvas antiderrapantes com reforço no pulso para melhor pegada e prevenção de calos.", image: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=600&q=80" },
+                    { id: 506, name: "Rolo de Liberação Miofascial (Foam Roller)", price: 89.90, description: "Rolo de massagem profunda para relaxamento muscular, dor pós-treino e flexibilidade.", image: "https://images.unsplash.com/photo-1599447421416-3414500d18a5?w=600&q=80" }
+                ]
+            },
+            suplementos: {
+                title: "Suplementos",
+                products: [
+                    { id: 601, name: "Whey Protein Concentrado 100% 900g", price: 119.90, description: "Proteína de alto valor biológico para ganho de massa muscular e recuperação pós-treino.", image: "https://images.unsplash.com/photo-1579722821273-0f6c7d44362f?w=600&q=80" },
+                    { id: 602, name: "Creatina Monohidratada Pura 300g", price: 89.90, description: "Creatina 100% pura para aumento de força, explosão muscular e volume muscular.", image: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=600&q=80" },
+                    { id: 603, name: "Pré-Treino Ultra Focus 300g", price: 99.00, description: "Fórmula concentrada com cafeína, beta-alanina e taurina para energia máxima no treino.", image: "https://images.unsplash.com/photo-1584017911766-d451b3d0e843?w=600&q=80" },
+                    { id: 604, name: "BCAA 2:1:1 Aminoácidos 120 Cápsulas", price: 45.00, description: "Auxilia no combate à fadiga muscular e acelera a regeneração das fibras musculares.", image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&q=80" },
+                    { id: 605, name: "Multivitamínico Completo A-Z (90 Caps)", price: 39.90, description: "Complexo de vitaminas e minerais esenciales para reforçar a imunidade e a energia diária.", image: "https://images.unsplash.com/photo-1550572017-edf7485ed9e9?w=600&q=80" },
+                    { id: 606, name: "Coqueteleira Inox Shaker 750ml", price: 49.90, description: "Coqueteleira térmica em aço inox com mola misturadora em inox livre de BPA.", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=600&q=80" }
+                ]
             }
         };
 
@@ -324,9 +362,10 @@
         function selectCategory(categoryKey) {
             currentCategoryKey = categoryKey;
             
-            // Atualiza a borda e destaque visual dos círculos
-            ['eletronicos', 'roupas', 'calcados', 'lar'].forEach(key => {
+            // Atualiza o destaque visual dos botões circulares das 6 categorias
+            ['eletronicos', 'roupas', 'calcados', 'lar', 'academia', 'suplementos'].forEach(key => {
                 const btn = document.getElementById(`cat-btn-${key}`);
+                if (!btn) return;
                 const label = btn.nextElementSibling;
                 if (key === categoryKey) {
                     btn.classList.add('border-indigo-600');
@@ -407,17 +446,15 @@
             `).join('');
         }
 
-        // Filtro de busca global (procura em todas as categorias)
+        // Função auxiliar para juntar todos os produtos de todas as categorias
+        function getAllProducts() {
+            return Object.values(categoriesData).flatMap(cat => cat.products);
+        }
+
+        // Filtro de busca global (procura em todas as 6 categorias)
         function filterProducts() {
             const query = document.getElementById('search-input').value.toLowerCase().trim();
-            
-            // Junta todos os produtos de todas as categorias em um único array para busca geral
-            const allProducts = [
-                ...categoriesData.eletronicos.products,
-                ...categoriesData.roupas.products,
-                ...categoriesData.calcados.products,
-                ...categoriesData.lar.products
-            ];
+            const allProducts = getAllProducts();
 
             const filtered = allProducts.filter(p => 
                 p.name.toLowerCase().includes(query) || 
@@ -442,13 +479,7 @@
 
         // Adiciona ao carrinho
         function addToCart(productId) {
-            const allProducts = [
-                ...categoriesData.eletronicos.products,
-                ...categoriesData.roupas.products,
-                ...categoriesData.calcados.products,
-                ...categoriesData.lar.products
-            ];
-            
+            const allProducts = getAllProducts();
             const product = allProducts.find(p => p.id === productId);
             if (!product) return;
 
@@ -522,7 +553,7 @@
                         <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded-lg bg-white flex-shrink-0" />
                         <div class="flex-grow min-w-0">
                             <h4 class="text-xs font-bold text-slate-800 truncate">${item.name}</h4>
-                            <span class="text-xs font-extrabold text-indigo-600 block mt-0.5">${formatMessage = formatMoney(item.price)}</span>
+                            <span class="text-xs font-extrabold text-indigo-600 block mt-0.5">${formatMoney(item.price)}</span>
                             <div class="flex items-center gap-2 mt-2">
                                 <div class="flex items-center border border-slate-200 bg-white rounded-lg">
                                     <button onclick="updateQuantity(${item.id}, -1)" class="w-6 h-6 flex items-center justify-center text-slate-500 hover:text-slate-800 text-xs">
