@@ -1,15 +1,490 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Assis Leite | Materiais & Soluções</title><style>
-:root{--navy:#102a43;--blue:#176b87;--gold:#e6ad45;--ink:#172b3a;--muted:#66798a;--bg:#f4f7fa}*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;color:var(--ink);background:var(--bg)}.top{background:#091d30;color:#dce7ef;padding:9px 5%;font-size:12px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}header{background:var(--navy);color:white;padding:20px 5%;display:flex;justify-content:space-between;align-items:center;position:relative;z-index:2}.brand{display:flex;gap:12px;align-items:center}.logo{background:var(--gold);color:var(--navy);font-weight:900;border-radius:10px;padding:12px}.brand b{display:block;letter-spacing:1px}.brand small{color:#b9cbd8;letter-spacing:2px;font-size:10px}.nav{display:flex;gap:24px;align-items:center}.nav>a,.menu button{color:white;text-decoration:none;background:none;border:0;font:inherit;cursor:pointer}.menu{position:relative}.drop{display:none;position:absolute;right:0;top:35px;width:205px;background:white;border-radius:10px;padding:8px;box-shadow:0 15px 40px #0003}.drop a{display:block;padding:12px;color:#17334a;text-decoration:none;border-radius:7px;font-size:14px}.drop a:hover{background:#edf3f6}.menu.open .drop{display:block}.hero{padding:75px 6%;color:white;background:linear-gradient(100deg,#102a43f5,#17617be0),url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1800&q=85') center/cover}.hero>div{max-width:1150px;margin:auto}.eyebrow{color:var(--gold);font-size:11px;font-weight:bold;letter-spacing:2px;text-transform:uppercase}.hero h1{font-size:clamp(36px,5vw,58px);max-width:680px;line-height:1.08;margin:14px 0}.hero p{max-width:560px;color:#dbe6ed;line-height:1.7}.cta{display:inline-block;background:var(--gold);color:#142b3e;padding:14px 20px;border-radius:6px;text-decoration:none;font-weight:bold;margin-top:12px}.wrap{max-width:1200px;margin:auto;padding:55px 22px}.head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:25px}.head h2{margin:8px 0 0;color:var(--navy);font-size:30px}.head p{max-width:420px;color:var(--muted);font-size:14px;line-height:1.6}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.card{background:white;border:1px solid #e1e8ed;border-radius:12px;overflow:hidden;box-shadow:0 8px 25px #17334a0b;display:flex;flex-direction:column}.photo{height:185px;background:#e8eef2}.photo img{width:100%;height:100%;object-fit:cover}.body{padding:19px;display:flex;flex-direction:column;flex:1}.tag{font-size:10px;color:var(--blue);font-weight:bold;letter-spacing:1px;text-transform:uppercase}.body h3{color:var(--navy);margin:9px 0}.desc{font-size:13px;color:var(--muted);line-height:1.6;min-height:42px}.price{font-size:23px;font-weight:850;color:var(--navy);margin:15px 0 4px}.location{font-size:12px;color:var(--muted);margin-bottom:16px}.buy{background:var(--navy);color:white;text-align:center;padding:12px;border-radius:6px;text-decoration:none;font-size:13px;font-weight:bold;margin-top:auto}.buy:hover{background:var(--blue)}.empty{grid-column:1/-1;background:white;border:1px dashed #bdcbd5;border-radius:10px;padding:30px;text-align:center;color:var(--muted)}.about{background:#eaf0f4;padding:36px 6%;display:grid;grid-template-columns:repeat(3,1fr);gap:25px}.about h3{color:var(--navy);margin:0 0 8px}.about p{color:var(--muted);font-size:13px;line-height:1.6;margin:0}footer{background:#091d30;color:#c5d2dc;padding:28px 6%;display:flex;justify-content:space-between;flex-wrap:wrap;font-size:13px}
-@media(max-width:760px){.nav>a{display:none}.grid{grid-template-columns:repeat(2,1fr)}.head{display:block}.about{grid-template-columns:1fr}.hero{padding:60px 6%}}@media(max-width:540px){.grid{grid-template-columns:1fr}.photo{height:210px}.wrap{padding:40px 17px}.brand b{font-size:14px}.brand small{font-size:9px}.top{justify-content:center}}
-</style></head><body>
-<div class="top"><span>Materiais selecionados para sua obra</span><span>WhatsApp: (84) 98825-1134</span></div>
-<header><a class="brand" href="#" style="color:white;text-decoration:none"><span class="logo">AL</span><span><b>ASSIS LEITE</b><small>MATERIAIS & SOLUÇÕES</small></span></a><nav class="nav"><a href="#produtos">Produtos</a><div class="menu" id="menu"><button id="menuBtn">Menu ☰</button><div class="drop"><a href="admin.html">Login do dono</a><a href="#quem-somos">Quem somos</a><a href="#contato">Contato</a></div></div></nav></header>
-<section class="hero"><div><div class="eyebrow">Qualidade para construir</div><h1>O material certo para sua obra.</h1><p>Produtos, preços claros e atendimento direto para construir ou reformar com mais praticidade.</p><a class="cta" href="#produtos">Explorar produtos →</a></div></section>
-<main class="wrap" id="produtos"><div class="head"><div><div class="eyebrow">Nossa seleção</div><h2>Produtos em destaque</h2></div><p>Confira os produtos disponíveis e fale com nossa equipe para confirmar estoque, entrega e condições.</p></div><div class="grid" id="products"><div class="empty">Carregando catálogo…</div></div></main>
-<section class="about"><div id="quem-somos"><h3>Quem somos</h3><p>Atendimento próximo e soluções para quem está construindo, reformando ou abastecendo sua obra.</p></div><div><h3>Atendimento</h3><p>Consulte disponibilidade, medidas, preços e opções de retirada ou entrega.</p></div><div id="contato"><h3>Contato</h3><p>WhatsApp: (84) 98825-1134<br>Estamos prontos para atender você.</p></div></section><footer><b>ASSIS LEITE · MATERIAIS & SOLUÇÕES</b><span>© <span id="year"></span> Todos os direitos reservados</span></footer>
-<script type="module">
-import{initializeApp}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";import{getFirestore,collection,getDocs,query,orderBy}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-const firebaseConfig={apiKey:"AIzaSyBaoUIuPzxWWRfYi5yA6mR-yakc1f1ZzaY",authDomain:"projeto-teste-2027.firebaseapp.com",projectId:"projeto-teste-2027",storageBucket:"projeto-teste-2027.firebasestorage.app",messagingSenderId:"656064645546",appId:"1:656064645546:web:c0b39c8517abec430a43d3",measurementId:"G-PPWNLCSY9Q"};
-const db=getFirestore(initializeApp(firebaseConfig)),phone="5584988251134",esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])),brl=n=>Number(n||0).toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
-async function show(){let el=document.querySelector("#products");try{let s=await getDocs(query(collection(db,"produtos"),orderBy("criadoEm","desc")));let docs=s.docs.slice(0,6);if(!docs.length){el.innerHTML='<div class="empty">Os produtos serão exibidos aqui assim que forem cadastrados no painel do proprietário.</div>';return}el.innerHTML=docs.map(d=>{let p=d.data(),n=esc(p.nome),m=encodeURIComponent("Olá! Tenho interesse em "+(p.nome||"um produto")+". Poderia me informar mais?");return `<article class="card"><div class="photo"><img src="${esc(p.imagem||"https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=900&q=80")}" alt="${n}"></div><div class="body"><span class="tag">Material para sua obra</span><h3>${n}</h3><div class="desc">${esc(p.descricao)}</div><div class="price">${brl(p.preco)}</div><div class="location">Localização: ${esc(p.localizacao||"Consulte disponibilidade")}</div><a class="buy" target="_blank" rel="noopener" href="https://wa.me/${phone}?text=${m}">Comprar pelo WhatsApp ↗</a></div></article>`}).join("")}catch(e){el.innerHTML='<div class="empty">Não foi possível carregar os produtos. Confira a conexão e as regras do Firestore.</div>';console.error(e)}}show();document.querySelector("#year").textContent=new Date().getFullYear();let menu=document.querySelector("#menu");document.querySelector("#menuBtn").onclick=()=>menu.classList.toggle("open");document.addEventListener("click",e=>{if(!menu.contains(e.target))menu.classList.remove("open")});
-</script></body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore - Sua Loja de Tecnologia</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom scrollbar for cart drawer */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 9999px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen">
+
+    <!-- HEADER / BARRA DE NAVEGAÇÃO -->
+    <header class="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 gap-4">
+                
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="resetSearch()">
+                    <div class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white font-bold text-xl shadow-md shadow-indigo-200">
+                        <i class="fa-solid font-bold fa-bolt"></i>
+                    </div>
+                    <span class="text-xl font-bold bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">TechStore</span>
+                </div>
+
+                <!-- Campo de Busca em Tempo Real -->
+                <div class="flex-1 max-w-md mx-2 sm:mx-4">
+                    <div class="relative">
+                        <input 
+                            type="text" 
+                            id="search-input" 
+                            placeholder="Buscar produtos..." 
+                            class="w-full pl-10 pr-4 py-2 text-sm bg-slate-100 border border-transparent rounded-full focus:bg-white focus:border-indigo-500 focus:outline-none transition-all duration-200"
+                            oninput="filterProducts()"
+                        >
+                        <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+                            <i class="fa-solid fa-magnifying-glass text-sm"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botão de Carrinho com Badge -->
+                <div class="flex items-center">
+                    <button 
+                        id="cart-button" 
+                        onclick="toggleCart(true)" 
+                        class="relative p-2.5 text-slate-700 hover:text-indigo-600 hover:bg-slate-100 rounded-full transition-colors focus:outline-none"
+                        aria-label="Abrir carrinho"
+                    >
+                        <i class="fa-solid fa-bag-shopping text-xl"></i>
+                        <span 
+                            id="cart-count" 
+                            class="absolute top-0 right-0 inline-flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-indigo-600 rounded-full ring-2 ring-white transform translate-x-1 -translate-y-1 scale-0 transition-transform duration-300"
+                        >
+                            0
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
+        <!-- Banner de Boas-vindas -->
+        <div class="bg-gradient-to-r from-indigo-600 via-indigo-700 to-violet-800 rounded-3xl p-6 sm:p-10 text-white mb-8 shadow-xl shadow-indigo-100 relative overflow-hidden">
+            <div class="relative z-10 max-w-xl">
+                <span class="inline-block px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-xs font-semibold uppercase tracking-wider mb-3">Ofertas Especiais</span>
+                <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight mb-2">Tecnologia Premium ao Seu Alcance</h1>
+                <p class="text-indigo-100 text-sm sm:text-base">Aproveite nossos preços exclusivos e garanta frete grátis para todo o Brasil em compras selecionadas.</p>
+            </div>
+            <div class="absolute -right-10 -bottom-10 opacity-10 pointer-events-none">
+                <i class="fa-solid fa-microchip text-[240px]"></i>
+            </div>
+        </div>
+
+        <!-- Título da Seção & Filtros Status -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+            <div>
+                <h2 class="text-xl font-bold text-slate-900">Produtos em Destaque</h2>
+                <p id="search-results-info" class="text-sm text-slate-500">Mostrando todos os produtos</p>
+            </div>
+        </div>
+
+        <!-- Grade de Produtos Responsiva -->
+        <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- Cards gerados via JS -->
+        </div>
+
+        <!-- Estado Vazio (Sem resultados da busca) -->
+        <div id="empty-search" class="hidden text-center py-16">
+            <div class="w-16 h-16 bg-slate-100 text-slate-400 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <h3 class="text-lg font-semibold text-slate-800 mb-1">Nenhum produto encontrado</h3>
+            <p class="text-slate-500 text-sm mb-4">Tente buscar por outro termo ou palavra-chave.</p>
+            <button onclick="resetSearch()" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-xl text-sm transition-colors">
+                Ver todos os produtos
+            </button>
+        </div>
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer class="bg-white border-t border-slate-200 mt-12 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-slate-500">
+            <div class="flex items-center gap-2">
+                <div class="w-6 h-6 rounded-lg bg-indigo-600 flex items-center justify-center text-white text-xs font-bold">
+                    <i class="fa-solid fa-bolt"></i>
+                </div>
+                <span class="font-bold text-slate-700">TechStore</span> &copy; 2026 - Todos os direitos reservados.
+            </div>
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-indigo-600 transition-colors">Termos</a>
+                <a href="#" class="hover:text-indigo-600 transition-colors">Privacidade</a>
+                <a href="#" class="hover:text-indigo-600 transition-colors">Suporte</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- PAINEL LATERAL DO CARRINHO (DRAWER) -->
+    <div id="cart-drawer-overlay" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300" onclick="toggleCart(false)"></div>
+    
+    <aside id="cart-drawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-white z-50 shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
+        <!-- Cabeçalho do Carrinho -->
+        <div class="p-5 border-b border-slate-100 flex items-center justify-between bg-slate-50">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-bag-shopping text-indigo-600 text-lg"></i>
+                <h3 class="font-bold text-lg text-slate-800">Seu Carrinho</h3>
+                <span id="cart-drawer-badge" class="ml-2 text-xs bg-indigo-100 text-indigo-700 font-semibold px-2.5 py-0.5 rounded-full">0 itens</span>
+            </div>
+            <button onclick="toggleCart(false)" class="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-200 rounded-full transition-colors">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+        </div>
+
+        <!-- Lista de Itens do Carrinho -->
+        <div id="cart-items" class="flex-1 overflow-y-auto p-5 space-y-4 custom-scrollbar">
+            <!-- Itens inseridos via JS -->
+        </div>
+
+        <!-- Estado Vazio do Carrinho -->
+        <div id="cart-empty-state" class="flex-1 flex flex-col items-center justify-center p-6 text-center">
+            <div class="w-20 h-20 bg-slate-100 text-slate-300 rounded-full flex items-center justify-center mb-4 text-3xl">
+                <i class="fa-solid fa-cart-flatbed"></i>
+            </div>
+            <h4 class="font-semibold text-slate-700 mb-1">Seu carrinho está vazio</h4>
+            <p class="text-sm text-slate-400 max-w-xs mb-6">Explore nossos produtos incríveis e adicione seus favoritos aqui.</p>
+            <button onclick="toggleCart(false)" class="px-5 py-2.5 bg-indigo-600 text-white font-medium text-sm rounded-xl hover:bg-indigo-700 transition-colors">
+                Começar a Comprar
+            </button>
+        </div>
+
+        <!-- Rodapé do Carrinho com Resumo do Valor -->
+        <div id="cart-footer" class="p-5 border-t border-slate-100 bg-slate-50 space-y-4 hidden">
+            <div class="space-y-2 text-sm">
+                <div class="flex justify-between text-slate-500">
+                    <span>Subtotal</span>
+                    <span id="cart-subtotal">R$ 0,00</span>
+                </div>
+                <div class="flex justify-between text-slate-500">
+                    <span>Frete</span>
+                    <span class="text-emerald-600 font-medium">Grátis</span>
+                </div>
+                <div class="flex justify-between text-base font-bold text-slate-900 pt-2 border-t border-slate-200">
+                    <span>Total</span>
+                    <span id="cart-total" class="text-indigo-600 text-lg">R$ 0,00</span>
+                </div>
+            </div>
+            
+            <button onclick="checkout()" class="w-full py-3.5 bg-indigo-600 hover:bg-indigo-700 active:scale-[0.98] text-white font-semibold rounded-xl shadow-lg shadow-indigo-200 transition-all flex items-center justify-center gap-2">
+                <span>Finalizar Compra</span>
+                <i class="fa-solid fa-arrow-right text-sm"></i>
+            </button>
+        </div>
+    </aside>
+
+    <!-- NOTIFICAÇÃO TOAST -->
+    <div id="toast" class="fixed bottom-5 right-5 bg-slate-900 text-white px-4 py-3 rounded-2xl shadow-xl flex items-center gap-3 transform translate-y-20 opacity-0 transition-all duration-300 z-50">
+        <div class="w-7 h-7 rounded-full bg-emerald-500 flex items-center justify-center text-white text-xs">
+            <i class="fa-solid fa-check"></i>
+        </div>
+        <span id="toast-message" class="text-sm font-medium">Produto adicionado ao carrinho!</span>
+    </div>
+
+    <!-- JAVASCRIPT DA APLICAÇÃO -->
+    <script>
+        // Dados dos 6 Produtos Pré-carregados
+        const products = [
+            {
+                id: 1,
+                name: "Fone de Ouvido Bluetooth Sem Fio",
+                price: 189.90,
+                description: "Fone com cancelamento de ruído ativo, bateria de até 24h e conexão rápida Bluetooth 5.3.",
+                image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&q=80"
+            },
+            {
+                id: 2,
+                name: "Smartwatch Esportivo AMOLED",
+                price: 299.00,
+                description: "Relógio inteligente com monitoramento cardíaco, GPS integrado e resistência à água (5 ATM).",
+                image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=80"
+            },
+            {
+                id: 3,
+                name: "Mochila Urbana Impermeável",
+                price: 149.50,
+                description: "Mochila resistente para notebook de até 15.6\", com compartimento antifurto e entrada USB.",
+                image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&q=80"
+            },
+            {
+                id: 4,
+                name: "Teclado Mecânico RGB Compacto",
+                price: 239.90,
+                description: "Teclado switch azul, iluminação RGB customizável e layout 60% ideal para jogos e trabalho.",
+                image: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=600&q=80"
+            },
+            {
+                id: 5,
+                name: "Garrafa Térmica Inox 1L",
+                price: 79.90,
+                description: "Mantém bebidas geladas por 24 horas e quentes por 12 horas. Livre de BPA com tampa hermética.",
+                image: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=600&q=80"
+            },
+            {
+                id: 6,
+                name: "Carregador Rápido GaN 65W",
+                price: 119.00,
+                description: "Carregador compacto com 3 saídas (2x USB-C + 1x USB-A), compatível com notebooks e celulares.",
+                image: "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=600&q=80"
+            }
+        ];
+
+        // Estado do Carrinho (Armazenado na memória)
+        let cart = [];
+
+        // Inicialização
+        window.addEventListener('DOMContentLoaded', () => {
+            renderProducts(products);
+            updateCartUI();
+        });
+
+        // Formatação de Moeda
+        function formatMoney(amount) {
+            return amount.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        }
+
+        // Renderiza os cards de produtos na página
+        function renderProducts(items) {
+            const grid = document.getElementById('products-grid');
+            const emptySearch = document.getElementById('empty-search');
+
+            if (items.length === 0) {
+                grid.innerHTML = '';
+                emptySearch.classList.remove('hidden');
+                return;
+            }
+
+            emptySearch.classList.add('hidden');
+            grid.innerHTML = items.map(product => `
+                <div class="bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden group">
+                    <div class="relative overflow-hidden bg-slate-100 pt-[75%]">
+                        <img 
+                            src="${product.image}" 
+                            alt="${product.name}" 
+                            loading="lazy"
+                            class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            onerror="this.src='https://placehold.co/600x400/e2e8f0/475569?text=Produto'"
+                        />
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <h3 class="font-bold text-slate-800 text-base leading-snug mb-2 group-hover:text-indigo-600 transition-colors">
+                            ${product.name}
+                        </h3>
+                        <p class="text-xs text-slate-500 line-clamp-2 mb-4 flex-grow">
+                            ${product.description}
+                        </p>
+                        <div class="pt-3 border-t border-slate-100 flex items-center justify-between gap-2 mt-auto">
+                            <div>
+                                <span class="text-xs text-slate-400 block font-medium">Preço</span>
+                                <span class="text-lg font-extrabold text-slate-900">${formatMoney(product.price)}</span>
+                            </div>
+                            <button 
+                                onclick="addToCart(${product.id})" 
+                                class="px-3.5 py-2.5 bg-indigo-600 hover:bg-indigo-700 active:scale-95 text-white text-xs font-semibold rounded-xl flex items-center gap-1.5 transition-all shadow-md shadow-indigo-100"
+                            >
+                                <i class="fa-solid fa-cart-plus text-sm"></i>
+                                <span>Comprar</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Filtra os produtos com base na busca
+        function filterProducts() {
+            const query = document.getElementById('search-input').value.toLowerCase().trim();
+            const filtered = products.filter(p => 
+                p.name.toLowerCase().includes(query) || 
+                p.description.toLowerCase().includes(query)
+            );
+            
+            const resultsInfo = document.getElementById('search-results-info');
+            if (query) {
+                resultsInfo.textContent = `Resultados para "${query}" (${filtered.length})`;
+            } else {
+                resultsInfo.textContent = 'Mostrando todos os produtos';
+            }
+
+            renderProducts(filtered);
+        }
+
+        // Reseta o filtro de busca
+        function resetSearch() {
+            document.getElementById('search-input').value = '';
+            document.getElementById('search-results-info').textContent = 'Mostrando todos os produtos';
+            renderProducts(products);
+        }
+
+        // Adiciona um produto ao carrinho
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            const existingItem = cart.find(item => item.id === productId);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+
+            updateCartUI();
+            showToast(`"${product.name}" foi adicionado!`);
+        }
+
+        // Altera a quantidade de um item no carrinho
+        function updateQuantity(productId, change) {
+            const item = cart.find(i => i.id === productId);
+            if (!item) return;
+
+            item.quantity += change;
+
+            if (item.quantity <= 0) {
+                removeFromCart(productId);
+            } else {
+                updateCartUI();
+            }
+        }
+
+        // Remove um item do carrinho
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartUI();
+        }
+
+        // Atualiza toda a Interface do Carrinho
+        function updateCartUI() {
+            const totalItemsCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+            // Atualizar badges
+            const cartCountBadge = document.getElementById('cart-count');
+            const drawerBadge = document.getElementById('cart-drawer-badge');
+
+            cartCountBadge.textContent = totalItemsCount;
+            drawerBadge.textContent = `${totalItemsCount} ${totalItemsCount === 1 ? 'item' : 'itens'}`;
+
+            if (totalItemsCount > 0) {
+                cartCountBadge.classList.remove('scale-0');
+                cartCountBadge.classList.add('scale-100');
+            } else {
+                cartCountBadge.classList.remove('scale-100');
+                cartCountBadge.classList.add('scale-0');
+            }
+
+            // Atualizar valores do rodapé
+            document.getElementById('cart-subtotal').textContent = formatMoney(subtotal);
+            document.getElementById('cart-total').textContent = formatMoney(subtotal);
+
+            // Controlar a visibilidade da lista vs estado vazio
+            const itemsContainer = document.getElementById('cart-items');
+            const emptyState = document.getElementById('cart-empty-state');
+            const footer = document.getElementById('cart-footer');
+
+            if (cart.length === 0) {
+                itemsContainer.classList.add('hidden');
+                emptyState.classList.remove('hidden');
+                footer.classList.add('hidden');
+            } else {
+                itemsContainer.classList.remove('hidden');
+                emptyState.classList.add('hidden');
+                footer.classList.remove('hidden');
+
+                // Renderizar Itens
+                itemsContainer.innerHTML = cart.map(item => `
+                    <div class="flex items-center gap-3 p-3 bg-slate-50 rounded-xl border border-slate-100">
+                        <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded-lg bg-white flex-shrink-0" />
+                        <div class="flex-grow min-w-0">
+                            <h4 class="text-xs font-bold text-slate-800 truncate">${item.name}</h4>
+                            <span class="text-xs font-extrabold text-indigo-600 block mt-0.5">${formatMoney(item.price)}</span>
+                            
+                            <div class="flex items-center gap-2 mt-2">
+                                <div class="flex items-center border border-slate-200 bg-white rounded-lg">
+                                    <button onclick="updateQuantity(${item.id}, -1)" class="w-6 h-6 flex items-center justify-center text-slate-500 hover:text-slate-800 text-xs">
+                                        <i class="fa-solid fa-minus"></i>
+                                    </button>
+                                    <span class="w-6 text-center text-xs font-semibold text-slate-700">${item.quantity}</span>
+                                    <button onclick="updateQuantity(${item.id}, 1)" class="w-6 h-6 flex items-center justify-center text-slate-500 hover:text-slate-800 text-xs">
+                                        <i class="fa-solid fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <button onclick="removeFromCart(${item.id})" class="p-2 text-slate-400 hover:text-rose-500 transition-colors">
+                            <i class="fa-solid fa-trash-can text-sm"></i>
+                        </button>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // Abre / Fecha o Drawer do Carrinho
+        function toggleCart(open) {
+            const drawer = document.getElementById('cart-drawer');
+            const overlay = document.getElementById('cart-drawer-overlay');
+
+            if (open) {
+                overlay.classList.remove('opacity-0', 'pointer-events-none');
+                drawer.classList.remove('translate-x-full');
+                document.body.classList.add('overflow-hidden');
+            } else {
+                overlay.classList.add('opacity-0', 'pointer-events-none');
+                drawer.classList.add('translate-x-full');
+                document.body.classList.remove('overflow-hidden');
+            }
+        }
+
+        // Exibe Notificação Toast
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+
+            toastMsg.textContent = message;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        // Finalizar Compra Simulação
+        function checkout() {
+            if (cart.length === 0) return;
+
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            // Simulação de compra com aviso elegante sem usar alert() nativo
+            cart = [];
+            updateCartUI();
+            toggleCart(false);
+
+            showToast(`Pedido realizado com sucesso! Total: ${formatMoney(total)}`);
+        }
+    </script>
+</body>
+</html>
