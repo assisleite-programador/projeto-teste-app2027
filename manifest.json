@@ -1,10 +1,10 @@
 {
-  "name": "TechStore - Sua Loja Online",
+  "name": "TechStore - Achadinhos",
   "short_name": "TechStore",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#f8fafc",
-  "theme_color": "#4f46e5",
+  "theme_color": "#ee4d2d",
   "orientation": "portrait",
   "icons": [
     {
