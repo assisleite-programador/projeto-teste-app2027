@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechStore - Sua Loja de Ofertas</title>
+    <title>TechStore - Ofertas Shopee</title>
     
     <!-- CONFIGURAÇÕES PWA (Para instalar no celular) -->
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#4f46e5">
+    <meta name="theme-color" content="#ee4d2d">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="TechStore">
@@ -32,10 +32,10 @@
             <div class="flex items-center justify-between h-16 gap-4">
                 <!-- LOGO -->
                 <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="resetToHome()">
-                    <div class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white font-bold text-xl shadow-md shadow-indigo-200">
-                        <i class="fa-solid fa-bolt"></i>
+                    <div class="w-10 h-10 rounded-xl bg-orange-600 flex items-center justify-center text-white font-bold text-xl shadow-md shadow-orange-200">
+                        <i class="fa-solid fa-bag-shopping"></i>
                     </div>
-                    <span class="text-xl font-bold bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">TechStore</span>
+                    <span class="text-xl font-bold bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">TechStore</span>
                 </div>
 
                 <!-- CAMPO DE BUSCA -->
@@ -44,8 +44,8 @@
                         <input 
                             type="text" 
                             id="search-input" 
-                            placeholder="Buscar produtos em todas as categorias..." 
-                            class="w-full pl-10 pr-4 py-2 text-sm bg-slate-100 border border-transparent rounded-full focus:bg-white focus:border-indigo-500 focus:outline-none transition-all duration-200"
+                            placeholder="Buscar produtos..." 
+                            class="w-full pl-10 pr-4 py-2 text-sm bg-slate-100 border border-transparent rounded-full focus:bg-white focus:border-orange-500 focus:outline-none transition-all duration-200"
                             oninput="filterProducts()"
                         >
                         <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
@@ -61,11 +61,11 @@
     <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
         
         <!-- BANNER -->
-        <div class="bg-gradient-to-r from-indigo-600 via-indigo-700 to-violet-800 rounded-3xl p-6 sm:p-10 text-white mb-8 shadow-xl shadow-indigo-100 relative overflow-hidden">
+        <div class="bg-gradient-to-r from-orange-500 via-orange-600 to-red-600 rounded-3xl p-6 sm:p-10 text-white mb-8 shadow-xl shadow-orange-100 relative overflow-hidden">
             <div class="relative z-10 max-w-xl">
-                <span class="inline-block px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-xs font-semibold uppercase tracking-wider mb-3">Departamentos</span>
-                <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight mb-2">As melhores ofertas para você</h1>
-                <p class="text-indigo-100 text-sm sm:text-base">Escolha uma categoria abaixo, clique em comprar e vá direto para a página do vendedor.</p>
+                <span class="inline-block px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-xs font-semibold uppercase tracking-wider mb-3">Melhores Achadinhos</span>
+                <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight mb-2">Compre Direto na Shopee</h1>
+                <p class="text-orange-100 text-sm sm:text-base">Selecione uma categoria, clique em "Comprar" e vá direto para a oferta oficial da loja parceira.</p>
             </div>
             <div class="absolute -right-10 -bottom-10 opacity-10 pointer-events-none">
                 <i class="fa-solid fa-bag-shopping text-[240px]"></i>
@@ -78,45 +78,45 @@
             <div class="flex items-center gap-6 overflow-x-auto pb-3 no-scrollbar">
                 
                 <button onclick="selectCategory('eletronicos')" class="group flex flex-col items-center flex-shrink-0 focus:outline-none">
-                    <div id="cat-btn-eletronicos" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white border-2 border-indigo-600 shadow-md group-hover:scale-105 transition-all overflow-hidden flex items-center justify-center">
+                    <div id="cat-btn-eletronicos" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white border-2 border-orange-600 shadow-md group-hover:scale-105 transition-all overflow-hidden flex items-center justify-center">
                         <img src="https://images.unsplash.com/photo-1526738549149-8e07eca6c147?w=300&q=80" alt="Eletrônicos" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
                     </div>
-                    <span class="mt-2 text-xs sm:text-sm font-bold text-indigo-600">Eletrônicos</span>
+                    <span class="mt-2 text-xs sm:text-sm font-bold text-orange-600">Eletrônicos</span>
                 </button>
 
                 <button onclick="selectCategory('roupas')" class="group flex flex-col items-center flex-shrink-0 focus:outline-none">
                     <div id="cat-btn-roupas" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white border-2 border-transparent shadow-md group-hover:scale-105 transition-all overflow-hidden flex items-center justify-center">
                         <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?w=300&q=80" alt="Roupas" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
                     </div>
-                    <span class="mt-2 text-xs sm:text-sm font-semibold text-slate-600 group-hover:text-indigo-600">Roupas</span>
+                    <span class="mt-2 text-xs sm:text-sm font-semibold text-slate-600 group-hover:text-orange-600">Roupas</span>
                 </button>
 
                 <button onclick="selectCategory('calcados')" class="group flex flex-col items-center flex-shrink-0 focus:outline-none">
                     <div id="cat-btn-calcados" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white border-2 border-transparent shadow-md group-hover:scale-105 transition-all overflow-hidden flex items-center justify-center">
                         <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=300&q=80" alt="Calçados" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
                     </div>
-                    <span class="mt-2 text-xs sm:text-sm font-semibold text-slate-600 group-hover:text-indigo-600">Calçados</span>
+                    <span class="mt-2 text-xs sm:text-sm font-semibold text-slate-600 group-hover:text-orange-600">Calçados</span>
                 </button>
 
                 <button onclick="selectCategory('lar')" class="group flex flex-col items-center flex-shrink-0 focus:outline-none">
                     <div id="cat-btn-lar" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white border-2 border-transparent shadow-md group-hover:scale-105 transition-all overflow-hidden flex items-center justify-center">
                         <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=300&q=80" alt="Para o Lar" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
                     </div>
-                    <span class="mt-2 text-xs sm:text-sm font-semibold text-slate-600 group-hover:text-indigo-600">Para o Lar</span>
+                    <span class="mt-2 text-xs sm:text-sm font-semibold text-slate-600 group-hover:text-orange-600">Para o Lar</span>
                 </button>
 
                 <button onclick="selectCategory('academia')" class="group flex flex-col items-center flex-shrink-0 focus:outline-none">
                     <div id="cat-btn-academia" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white border-2 border-transparent shadow-md group-hover:scale-105 transition-all overflow-hidden flex items-center justify-center">
                         <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=300&q=80" alt="Academia" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
                     </div>
-                    <span class="mt-2 text-xs sm:text-sm font-semibold text-slate-600 group-hover:text-indigo-600">Academia</span>
+                    <span class="mt-2 text-xs sm:text-sm font-semibold text-slate-600 group-hover:text-orange-600">Academia</span>
                 </button>
 
                 <button onclick="selectCategory('suplementos')" class="group flex flex-col items-center flex-shrink-0 focus:outline-none">
                     <div id="cat-btn-suplementos" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white border-2 border-transparent shadow-md group-hover:scale-105 transition-all overflow-hidden flex items-center justify-center">
                         <img src="https://images.unsplash.com/photo-1579722821273-0f6c7d44362f?w=300&q=80" alt="Suplementos" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
                     </div>
-                    <span class="mt-2 text-xs sm:text-sm font-semibold text-slate-600 group-hover:text-indigo-600">Suplementos</span>
+                    <span class="mt-2 text-xs sm:text-sm font-semibold text-slate-600 group-hover:text-orange-600">Suplementos</span>
                 </button>
 
             </div>
@@ -139,7 +139,7 @@
             </div>
             <h3 class="text-lg font-semibold text-slate-800 mb-1">Nenhum produto encontrado</h3>
             <p class="text-slate-500 text-sm mb-4">Tente buscar por outro termo ou limpe a busca.</p>
-            <button onclick="resetToHome()" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-xl text-sm transition-colors">
+            <button onclick="resetToHome()" class="px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white font-medium rounded-xl text-sm transition-colors">
                 Ver categoria atual
             </button>
         </div>
@@ -149,85 +149,85 @@
     <footer class="bg-white border-t border-slate-200 mt-12 py-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-slate-500">
             <div class="flex items-center gap-2">
-                <div class="w-6 h-6 rounded-lg bg-indigo-600 flex items-center justify-center text-white text-xs font-bold"><i class="fa-solid fa-bolt"></i></div>
+                <div class="w-6 h-6 rounded-lg bg-orange-600 flex items-center justify-center text-white text-xs font-bold"><i class="fa-solid fa-bag-shopping"></i></div>
                 <span class="font-bold text-slate-700">TechStore</span> &copy; 2026 - Todos os direitos reservados.
             </div>
             <div class="flex gap-6">
-                <a href="#" class="hover:text-indigo-600 transition-colors">Termos</a>
-                <a href="#" class="hover:text-indigo-600 transition-colors">Privacidade</a>
-                <a href="#" class="hover:text-indigo-600 transition-colors">Suporte</a>
+                <a href="#" class="hover:text-orange-600 transition-colors">Termos</a>
+                <a href="#" class="hover:text-orange-600 transition-colors">Privacidade</a>
+                <a href="#" class="hover:text-orange-600 transition-colors">Suporte</a>
             </div>
         </div>
     </footer>
 
-    <!-- JAVASCRIPT -->
+    <!-- JAVASCRIPT DA APLICAÇÃO -->
     <script>
-        // BANCO DE DADOS: Cole o link real do produto na propriedade "url"
+        // BANCO DE DADOS: Altere o valor de "url:" para o seu link de afiliado/vendedor da Shopee
         const categoriesData = {
             eletronicos: {
                 title: "Eletrônicos",
                 products: [
                     { id: 101, name: "Fone de Ouvido Bluetooth Sem Fio", price: 189.90, description: "Fone com cancelamento de ruído ativo, bateria de até 24h e conexão rápida Bluetooth 5.3.", image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&q=80", url: "https://shopee.com.br" },
-                    { id: 102, name: "Smartwatch Esportivo AMOLED", price: 299.00, description: "Relógio inteligente com monitoramento cardíaco, GPS integrado e resistência à água (5 ATM).", image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=80", url: "https://mercadolivre.com.br" },
-                    { id: 103, name: "Mochila Urbana Impermeável", price: 149.50, description: "Mochila resistente para notebook de até 15.6\", com compartimento antifurto e entrada USB.", image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&q=80", url: "https://amazon.com.br" },
+                    { id: 102, name: "Smartwatch Esportivo AMOLED", price: 299.00, description: "Relógio inteligente com monitoramento cardíaco, GPS integrado e resistência à água (5 ATM).", image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=80", url: "https://shopee.com.br" },
+                    { id: 103, name: "Mochila Urbana Impermeável", price: 149.50, description: "Mochila resistente para notebook de até 15.6\", com compartimento antifurto e entrada USB.", image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&q=80", url: "https://shopee.com.br" },
                     { id: 104, name: "Teclado Mecânico RGB Compacto", price: 239.90, description: "Teclado switch azul, iluminação RGB customizável e layout 60% ideal para jogos e trabalho.", image: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=600&q=80", url: "https://shopee.com.br" },
-                    { id: 105, name: "Garrafa Térmica Inox 1L", price: 79.90, description: "Mantém bebidas geladas por 24 horas e quentes por 12 horas. Livre de BPA com tampa hermética.", image: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=600&q=80", url: "https://mercadolivre.com.br" },
-                    { id: 106, name: "Carregador Rápido GaN 65W", price: 119.00, description: "Carregador compacto com 3 saídas (2x USB-C + 1x USB-A), compatível com notebooks e celulares.", image: "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=600&q=80", url: "https://amazon.com.br" }
+                    { id: 105, name: "Garrafa Térmica Inox 1L", price: 79.90, description: "Mantém bebidas geladas por 24 horas e quentes por 12 horas. Livre de BPA com tampa hermética.", image: "https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=600&q=80", url: "https://shopee.com.br" },
+                    { id: 106, name: "Carregador Rápido GaN 65W", price: 119.00, description: "Carregador compacto com 3 saídas (2x USB-C + 1x USB-A), compatível com notebooks e celulares.", image: "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=600&q=80", url: "https://shopee.com.br" }
                 ]
             },
             roupas: {
                 title: "Roupas",
                 products: [
                     { id: 201, name: "Camiseta Básica Premium Algodão", price: 69.90, description: "Camiseta 100% algodão penteado, toque macio, modelagem moderna e alta durabilidade.", image: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=600&q=80", url: "https://shopee.com.br" },
-                    { id: 202, name: "Jaqueta Jeans Casual Slim", price: 219.90, description: "Jaqueta jeans com lavagem clássica, bolsos frontais e ótimo caimento para qualquer ocasião.", image: "https://images.unsplash.com/photo-1576995853123-5a10305d93c0?w=600&q=80", url: "https://mercadolivre.com.br" },
-                    { id: 203, name: "Calça Jeans Comfort Stretch", price: 159.90, description: "Calça com elastano para maior flexibilidade e conforto durante todo o dia.", image: "https://images.unsplash.com/photo-1542272604-787c3835535d?w=600&q=80", url: "https://amazon.com.br" },
+                    { id: 202, name: "Jaqueta Jeans Casual Slim", price: 219.90, description: "Jaqueta jeans com lavagem clássica, bolsos frontais e ótimo caimento para qualquer ocasião.", image: "https://images.unsplash.com/photo-1576995853123-5a10305d93c0?w=600&q=80", url: "https://shopee.com.br" },
+                    { id: 203, name: "Calça Jeans Comfort Stretch", price: 159.90, description: "Calça com elastano para maior flexibilidade e conforto durante todo o dia.", image: "https://images.unsplash.com/photo-1542272604-787c3835535d?w=600&q=80", url: "https://shopee.com.br" },
                     { id: 204, name: "Moletom Canguru com Capuz", price: 179.90, description: "Moletom flanelado por dentro, super quentinho, capuz ajustável e bolso frontal.", image: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=600&q=80", url: "https://shopee.com.br" },
-                    { id: 205, name: "Camisa Polo Casual Piquet", price: 89.90, description: "Camisa polo em tecido piquet respirável, ideal para um visual casual ou corporativo leve.", image: "https://images.unsplash.com/photo-1625910513411-57d451242337?w=600&q=80", url: "https://mercadolivre.com.br" },
-                    { id: 206, name: "Blazer Slim Fit Elegante", price: 289.00, description: "Blazer com corte alfaiataria moderno, tecido estruturado e forro interno confortável.", image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&q=80", url: "https://amazon.com.br" }
+                    { id: 205, name: "Camisa Polo Casual Piquet", price: 89.90, description: "Camisa polo em tecido piquet respirável, ideal para um visual casual ou corporativo leve.", image: "https://images.unsplash.com/photo-1625910513411-57d451242337?w=600&q=80", url: "https://shopee.com.br" },
+                    { id: 206, name: "Blazer Slim Fit Elegante", price: 289.00, description: "Blazer com corte alfaiataria moderno, tecido estruturado e forro interno confortável.", image: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&q=80", url: "https://shopee.com.br" }
                 ]
             },
             calcados: {
                 title: "Calçados",
                 products: [
                     { id: 301, name: "Tênis Esportivo Running Pro", price: 259.90, description: "Tênis leve com solado amortecedor em EVA, cabedal em tecido respirável para corridas.", image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80", url: "https://shopee.com.br" },
-                    { id: 302, name: "Tênis Casual Urban Leather", price: 199.00, description: "Tênis casual em material sintético de alta qualidade, versátil para o dia a dia.", image: "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=600&q=80", url: "https://mercadolivre.com.br" },
-                    { id: 303, name: "Sapato Social Couro Comfort", price: 249.00, description: "Sapato em couro legítimo, solado emborrachado antiderrapante e palmilha anatômica.", image: "https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?w=600&q=80", url: "https://amazon.com.br" },
+                    { id: 302, name: "Tênis Casual Urban Leather", price: 199.00, description: "Tênis casual em material sintético de alta qualidade, versátil para o dia a dia.", image: "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=600&q=80", url: "https://shopee.com.br" },
+                    { id: 303, name: "Sapato Social Couro Comfort", price: 249.00, description: "Sapato em couro legítimo, solado emborrachado antiderrapante e palmilha anatômica.", image: "https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?w=600&q=80", url: "https://shopee.com.br" },
                     { id: 304, name: "Chinelo Nuvem Anatômico", price: 59.90, description: "Sandália chinelo ultra macia feita em EVA expandido, alivia o cansaço dos pés.", image: "https://images.unsplash.com/photo-1603808033192-082d6919d3e1?w=600&q=80", url: "https://shopee.com.br" },
-                    { id: 305, name: "Bota Cano Curto Adventure", price: 299.90, description: "Bota resistente à água com solado tratorado, perfeita para trilhas e uso urbano.", image: "https://images.unsplash.com/photo-1520639888713-7851133b1ed0?w=600&q=80", url: "https://mercadolivre.com.br" },
-                    { id: 306, name: "Tênis Slip-on Prático", price: 139.90, description: "Tênis sem cadarço, fácil de calçar, leve e ideal para caminhadas rápidas.", image: "https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=600&q=80", url: "https://amazon.com.br" }
+                    { id: 305, name: "Bota Cano Curto Adventure", price: 299.90, description: "Bota resistente à água com solado tratorado, perfeita para trilhas e uso urbano.", image: "https://images.unsplash.com/photo-1520639888713-7851133b1ed0?w=600&q=80", url: "https://shopee.com.br" },
+                    { id: 306, name: "Tênis Slip-on Prático", price: 139.90, description: "Tênis sem cadarço, fácil de calçar, leve e ideal para caminhadas rápidas.", image: "https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=600&q=80", url: "https://shopee.com.br" }
                 ]
             },
             lar: {
                 title: "Para o Lar",
                 products: [
                     { id: 401, name: "Cafeteira Elétrica Programável", price: 199.90, description: "Faz até 1.5L de café, jarra de vidro resistente e função corta-pingos.", image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=600&q=80", url: "https://shopee.com.br" },
-                    { id: 402, name: "Kit Potes Herméticos Vidro (4 pçs)", price: 119.90, description: "Potes de vidro borossilicato com tampa hermética de bambu. Vão ao forno e micro-ondas.", image: "https://images.unsplash.com/photo-1584269600464-37b1b58a9fe7?w=600&q=80", url: "https://mercadolivre.com.br" },
-                    { id: 403, name: "Luminária de Mesa LED Touch", price: 89.00, description: "Luminária articulável com ajuste de intensidade de luz e temperatura de cor.", image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=600&q=80", url: "https://amazon.com.br" },
+                    { id: 402, name: "Kit Potes Herméticos Vidro (4 pçs)", price: 119.90, description: "Potes de vidro borossilicato com tampa hermética de bambu. Vão ao forno e micro-ondas.", image: "https://images.unsplash.com/photo-1584269600464-37b1b58a9fe7?w=600&q=80", url: "https://shopee.com.br" },
+                    { id: 403, name: "Luminária de Mesa LED Touch", price: 89.00, description: "Luminária articulável com ajuste de intensidade de luz e temperatura de cor.", image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=600&q=80", url: "https://shopee.com.br" },
                     { id: 404, name: "Jogo de Toalhas Banho Algodão (5 pçs)", price: 149.00, description: "Toalhas felpudas de alta absorção, toque extremamente macio e durável.", image: "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=600&q=80", url: "https://shopee.com.br" },
-                    { id: 405, name: "Umidificador de Air Ultrassônico", price: 99.90, description: "Silencioso, com luz noturna LED e autonomia de até 10 horas contínuas.", image: "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=600&q=80", url: "https://mercadolivre.com.br" },
-                    { id: 406, name: "Air Fryer Digital 4L", price: 349.00, description: "Fritadeira sem óleo com painel touch, timer sonoro e cesto antiaderente removível.", image: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=600&q=80", url: "https://amazon.com.br" }
+                    { id: 405, name: "Umidificador de Ar Ultrassônico", price: 99.90, description: "Silencioso, com luz noturna LED e autonomia de até 10 horas contínuas.", image: "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=600&q=80", url: "https://shopee.com.br" },
+                    { id: 406, name: "Air Fryer Digital 4L", price: 349.00, description: "Fritadeira sem óleo com painel touch, timer sonoro e cesto antiaderente removível.", image: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=600&q=80", url: "https://shopee.com.br" }
                 ]
             },
             academia: {
                 title: "Academia",
                 products: [
                     { id: 501, name: "Kit Halteres Sextavados 5kg (Par)", price: 129.90, description: "Par de halteres emborrachados ideais para treinos em casa ou na academia.", image: "https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?w=600&q=80", url: "https://shopee.com.br" },
-                    { id: 502, name: "Kit Faixas Elásticas Mini Bands (5 Níveis)", price: 49.90, description: "Elásticos de resistência para fortalecimento muscular, fisioterapia e treino funcional.", image: "https://images.unsplash.com/photo-1598289431512-b97b0917affc?w=600&q=80", url: "https://mercadolivre.com.br" },
-                    { id: 503, name: "Tapete de Yoga / Pilates EVA Extra Macio", price: 79.90, description: "Tapete antiderrapante com espessura confortável para proteger articulações durante os treinos.", image: "https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?w=600&q=80", url: "https://amazon.com.br" },
+                    { id: 502, name: "Kit Faixas Elásticas Mini Bands (5 Níveis)", price: 49.90, description: "Elásticos de resistência para fortalecimento muscular, fisioterapia e treino funcional.", image: "https://images.unsplash.com/photo-1598289431512-b97b0917affc?w=600&q=80", url: "https://shopee.com.br" },
+                    { id: 503, name: "Tapete de Yoga / Pilates EVA Extra Macio", price: 79.90, description: "Tapete antiderrapante com espessura confortável para proteger articulações durante os treinos.", image: "https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?w=600&q=80", url: "https://shopee.com.br" },
                     { id: 504, name: "Corda de Pular de Alta Velocidade Speed Rope", price: 39.90, description: "Corda com rolamento duplo em aço ajustável, ideal para crossfit e exercícios aeróbicos.", image: "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&q=80", url: "https://shopee.com.br" },
-                    { id: 505, name: "Luvas de Musculação com Cobertura de Pulso", price: 54.90, description: "Luvas antiderrapantes com reforço no pulso para melhor pegada e prevenção de calos.", image: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=600&q=80", url: "https://mercadolivre.com.br" },
-                    { id: 506, name: "Rolo de Liberação Miofascial (Foam Roller)", price: 89.90, description: "Rolo de massagem profunda para relaxamento muscular, dor pós-treino e flexibilidade.", image: "https://images.unsplash.com/photo-1599447421416-3414500d18a5?w=600&q=80", url: "https://amazon.com.br" }
+                    { id: 505, name: "Luvas de Musculação com Cobertura de Pulso", price: 54.90, description: "Luvas antiderrapantes com reforço no pulso para melhor pegada e prevenção de calos.", image: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=600&q=80", url: "https://shopee.com.br" },
+                    { id: 506, name: "Rolo de Liberação Miofascial (Foam Roller)", price: 89.90, description: "Rolo de massagem profunda para relaxamento muscular, dor pós-treino e flexibilidade.", image: "https://images.unsplash.com/photo-1599447421416-3414500d18a5?w=600&q=80", url: "https://shopee.com.br" }
                 ]
             },
             suplementos: {
                 title: "Suplementos",
                 products: [
                     { id: 601, name: "Whey Protein Concentrado 100% 900g", price: 119.90, description: "Proteína de alto valor biológico para ganho de massa muscular e recuperação pós-treino.", image: "https://images.unsplash.com/photo-1579722821273-0f6c7d44362f?w=600&q=80", url: "https://shopee.com.br" },
-                    { id: 602, name: "Creatina Monohidratada Pura 300g", price: 89.90, description: "Creatina 100% pura para aumento de força, explosão muscular e volume muscular.", image: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=600&q=80", url: "https://mercadolivre.com.br" },
-                    { id: 603, name: "Pré-Treino Ultra Focus 300g", price: 99.00, description: "Fórmula concentrada com cafeína, beta-alanina e taurina para energia máxima no treino.", image: "https://images.unsplash.com/photo-1584017911766-d451b3d0e843?w=600&q=80", url: "https://amazon.com.br" },
+                    { id: 602, name: "Creatina Monohidratada Pura 300g", price: 89.90, description: "Creatina 100% pura para aumento de força, explosão muscular e volume muscular.", image: "https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=600&q=80", url: "https://shopee.com.br" },
+                    { id: 603, name: "Pré-Treino Ultra Focus 300g", price: 99.00, description: "Fórmula concentrada com cafeína, beta-alanina e taurina para energia máxima no treino.", image: "https://images.unsplash.com/photo-1584017911766-d451b3d0e843?w=600&q=80", url: "https://shopee.com.br" },
                     { id: 604, name: "BCAA 2:1:1 Aminoácidos 120 Cápsulas", price: 45.00, description: "Auxilia no combate à fadiga muscular e acelera a regeneração das fibras musculares.", image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&q=80", url: "https://shopee.com.br" },
-                    { id: 605, name: "Multivitamínico Completo A-Z (90 Caps)", price: 39.90, description: "Complexo de vitaminas e minerais esenciales para reforçar a imunidade e a energia diária.", image: "https://images.unsplash.com/photo-1550572017-edf7485ed9e9?w=600&q=80", url: "https://mercadolivre.com.br" },
-                    { id: 606, name: "Coqueteleira Inox Shaker 750ml", price: 49.90, description: "Coqueteleira térmica em aço inox com mola misturadora em inox livre de BPA.", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=600&q=80", url: "https://amazon.com.br" }
+                    { id: 605, name: "Multivitamínico Completo A-Z (90 Caps)", price: 39.90, description: "Complexo de vitaminas e minerais esenciales para reforçar a imunidade e a energia diária.", image: "https://images.unsplash.com/photo-1550572017-edf7485ed9e9?w=600&q=80", url: "https://shopee.com.br" },
+                    { id: 606, name: "Coqueteleira Inox Shaker 750ml", price: 49.90, description: "Coqueteleira térmica em aço inox com mola misturadora em inox livre de BPA.", image: "https://images.unsplash.com/photo-1544816155-12df9643f363?w=600&q=80", url: "https://shopee.com.br" }
                 ]
             }
         };
@@ -245,14 +245,14 @@
                 if (!btn) return;
                 const label = btn.nextElementSibling;
                 if (key === categoryKey) {
-                    btn.classList.add('border-indigo-600');
+                    btn.classList.add('border-orange-600');
                     btn.classList.remove('border-transparent');
-                    label.classList.add('text-indigo-600', 'font-bold');
+                    label.classList.add('text-orange-600', 'font-bold');
                     label.classList.remove('text-slate-600', 'font-semibold');
                 } else {
-                    btn.classList.remove('border-indigo-600');
+                    btn.classList.remove('border-orange-600');
                     btn.classList.add('border-transparent');
-                    label.classList.remove('text-indigo-600', 'font-bold');
+                    label.classList.remove('text-orange-600', 'font-bold');
                     label.classList.add('text-slate-600', 'font-semibold');
                 }
             });
@@ -271,7 +271,7 @@
             return amount.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
         }
 
-        // RENDERIZAÇÃO: O botão "Comprar" é um link direto (<a>) que abre a url do produto em outra aba
+        // MONTAGEM DOS CARDS: O BOTÃO COMPRAR É UM LINK DIRETO (<a>) PARA A SHOPEE (ABRE EM NOVA ABA)
         function renderProducts(items) {
             const grid = document.getElementById('products-grid');
             const emptySearch = document.getElementById('empty-search');
@@ -295,7 +295,7 @@
                         />
                     </div>
                     <div class="p-5 flex flex-col flex-grow">
-                        <h3 class="font-bold text-slate-800 text-base leading-snug mb-2 group-hover:text-indigo-600 transition-colors">
+                        <h3 class="font-bold text-slate-800 text-base leading-snug mb-2 group-hover:text-orange-600 transition-colors">
                             ${product.name}
                         </h3>
                         <p class="text-xs text-slate-500 line-clamp-2 mb-4 flex-grow">
@@ -308,15 +308,15 @@
                                 <span class="text-lg font-extrabold text-slate-900">${formatMoney(product.price)}</span>
                             </div>
                             
-                            <!-- BOTÃO COM LINK DIRETO PARA A PÁGINA DO VENDEDOR -->
+                            <!-- BOTÃO DE DIRETO PARA A SHOPEE -->
                             <a 
                                 href="${product.url}" 
                                 target="_blank" 
                                 rel="noopener noreferrer"
-                                class="px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 active:scale-95 text-white text-xs font-semibold rounded-xl flex items-center gap-1.5 transition-all shadow-md shadow-indigo-100"
+                                class="px-4 py-2.5 bg-orange-600 hover:bg-orange-700 active:scale-95 text-white text-xs font-semibold rounded-xl flex items-center gap-1.5 transition-all shadow-md shadow-orange-100"
                             >
-                                <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
                                 <span>Comprar</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
                             </a>
                         </div>
                     </div>
@@ -347,11 +347,11 @@
             loadCategory(currentCategoryKey);
         }
 
-        // REGISTRAR SERVICE WORKER PARA PWA (Instalação no celular)
+        // REGISTRAR SERVICE WORKER PARA PWA (Permite instalar o App no celular)
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('sw.js')
-                    .then(reg => console.log('Service Worker Registrado!'))
+                    .then(reg => console.log('PWA Pronto!'))
                     .catch(err => console.log('Erro PWA:', err));
             });
         }
