@@ -26,7 +26,7 @@
 </head>
 <body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen">
 
-    <!-- CABEÇALHO / NAVBAR (Sem carrinho) -->
+    <!-- CABEÇALHO / NAVBAR -->
     <header class="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16 gap-4">
@@ -65,7 +65,7 @@
             <div class="relative z-10 max-w-xl">
                 <span class="inline-block px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-xs font-semibold uppercase tracking-wider mb-3">Departamentos</span>
                 <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight mb-2">As melhores ofertas para você</h1>
-                <p class="text-indigo-100 text-sm sm:text-base">Escolha uma categoria abaixo, clique em comprar e garanta o seu produto diretamente na loja parceira.</p>
+                <p class="text-indigo-100 text-sm sm:text-base">Escolha uma categoria abaixo, clique em comprar e vá direto para a página do vendedor.</p>
             </div>
             <div class="absolute -right-10 -bottom-10 opacity-10 pointer-events-none">
                 <i class="fa-solid fa-bag-shopping text-[240px]"></i>
@@ -162,7 +162,7 @@
 
     <!-- JAVASCRIPT -->
     <script>
-        // BANCO DE DADOS: Altere a propriedade "url" de cada produto para colocar o link da Shopee, Mercado Livre, etc.
+        // BANCO DE DADOS: Cole o link real do produto na propriedade "url"
         const categoriesData = {
             eletronicos: {
                 title: "Eletrônicos",
@@ -204,7 +204,7 @@
                     { id: 402, name: "Kit Potes Herméticos Vidro (4 pçs)", price: 119.90, description: "Potes de vidro borossilicato com tampa hermética de bambu. Vão ao forno e micro-ondas.", image: "https://images.unsplash.com/photo-1584269600464-37b1b58a9fe7?w=600&q=80", url: "https://mercadolivre.com.br" },
                     { id: 403, name: "Luminária de Mesa LED Touch", price: 89.00, description: "Luminária articulável com ajuste de intensidade de luz e temperatura de cor.", image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=600&q=80", url: "https://amazon.com.br" },
                     { id: 404, name: "Jogo de Toalhas Banho Algodão (5 pçs)", price: 149.00, description: "Toalhas felpudas de alta absorção, toque extremamente macio e durável.", image: "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=600&q=80", url: "https://shopee.com.br" },
-                    { id: 405, name: "Umidificador de Ar Ultrassônico", price: 99.90, description: "Silencioso, com luz noturna LED e autonomia de até 10 horas contínuas.", image: "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=600&q=80", url: "https://mercadolivre.com.br" },
+                    { id: 405, name: "Umidificador de Air Ultrassônico", price: 99.90, description: "Silencioso, com luz noturna LED e autonomia de até 10 horas contínuas.", image: "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=600&q=80", url: "https://mercadolivre.com.br" },
                     { id: 406, name: "Air Fryer Digital 4L", price: 349.00, description: "Fritadeira sem óleo com painel touch, timer sonoro e cesto antiaderente removível.", image: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=600&q=80", url: "https://amazon.com.br" }
                 ]
             },
@@ -271,7 +271,7 @@
             return amount.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
         }
 
-        // RENDERIZAÇÃO: O botão "Comprar" agora é uma tag <a> que abre diretamente o link do produto
+        // RENDERIZAÇÃO: O botão "Comprar" é um link direto (<a>) que abre a url do produto em outra aba
         function renderProducts(items) {
             const grid = document.getElementById('products-grid');
             const emptySearch = document.getElementById('empty-search');
