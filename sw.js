@@ -1,11 +1,10 @@
-const CACHE_NAME = 'techstore-v1';
+const CACHE_NAME = 'techstore-v2';
 const assetsToCache = [
   './',
   './index.html',
   './manifest.json'
 ];
 
-// Instalação do Service Worker
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
@@ -14,7 +13,6 @@ self.addEventListener('install', (event) => {
   );
 });
 
-// Resposta com suporte a Cache
 self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(event.request).then((response) => {
